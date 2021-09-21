@@ -9,6 +9,7 @@ html {
 *,
 *:before,
 *:after {
+    cursor: url(https://cdn.custom-cursor.com/db/cursor/32/rick_and_morty_rick_sanchez_laser_gun_cursor.png) , default!important;
     font-family:Calligraphr;
     box-sizing: inherit;
 }
