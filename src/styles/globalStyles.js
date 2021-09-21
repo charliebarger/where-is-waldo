@@ -9,6 +9,7 @@ html {
 *,
 *:before,
 *:after {
+    font-family:Calligraphr;
     box-sizing: inherit;
 }
 body{
