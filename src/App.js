@@ -1,7 +1,8 @@
 import React from "react";
+import GolbalStyles from "./styles/globalStyles";
 
 function App() {
-  return <div className="App"></div>;
+  return <GolbalStyles></GolbalStyles>;
 }
 
 export default App;
