@@ -2,11 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
+  border-bottom: 2px solid white;
+  position: sticky;
+  top: 0;
   height: 100px;
   background: black;
   display: flex;
   /* background: black; */
-  box-shadow: rgb(0 0 0) 5px 5px 15px 5px;
+
   align-items: center;
   * {
     white-space: no-wrap;
@@ -33,7 +36,7 @@ const NavItem = styled.span`
   font-size: 26px;
   &:hover {
     transform: scale(1.1);
-    -webkit-text-stroke: 1.5px #bedb95;
+    -webkit-text-stroke: 1px #bedb95;
     color: #28b0c9;
     text-shadow: 0px 0px 5px limegreen;
   }
