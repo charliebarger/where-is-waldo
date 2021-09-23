@@ -9,6 +9,7 @@ const StyledNav = styled.nav`
   box-shadow: rgb(0 0 0) 5px 5px 15px 5px;
   align-items: center;
   * {
+    white-space: no-wrap;
     cursor: pointer;
   }
 `;
@@ -16,16 +17,26 @@ const StyledNav = styled.nav`
 const Logo = styled.span`
   -webkit-text-stroke: 1.5px #bedb95;
   color: #28b0c9;
-  font-size: 45px;
+  font-size: 40px;
   font-family: Get Schwifty;
   text-shadow: 0px 0px 5px limegreen;
-  padding: 20px;
+  padding: 40px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const NavItem = styled.span`
   color: white;
   font-family: Calligraphr;
-  font-size: 30px;
+  font-size: 26px;
+  &:hover {
+    transform: scale(1.1);
+    -webkit-text-stroke: 1.5px #bedb95;
+    color: #28b0c9;
+    text-shadow: 0px 0px 5px limegreen;
+  }
 `;
 
 const LeftNavItem = styled(NavItem)`
