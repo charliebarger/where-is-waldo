@@ -14,6 +14,7 @@ html {
     box-sizing: inherit;
 }
 body{
+    background:#32cd323d;
     min-height: 100vh;
 }
 `;
