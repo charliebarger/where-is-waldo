@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import Hamburger from "./Hamburger";
 const StyledNav = styled.nav`
   border-bottom: 2px solid white;
   position: sticky;
@@ -8,6 +8,7 @@ const StyledNav = styled.nav`
   height: 100px;
   background: black;
   display: flex;
+
   /* background: black; */
 
   align-items: center;
@@ -18,15 +19,25 @@ const StyledNav = styled.nav`
 `;
 
 const Logo = styled.span`
-  -webkit-text-stroke: 1.5px #bedb95;
-  color: #28b0c9;
+  -webkit-text-stroke: 1.5px ${({ theme }) => theme.colors.yellow};
+  color: ${({ theme }) => theme.colors.blue};
   font-size: 40px;
   font-family: Get Schwifty;
-  text-shadow: 0px 0px 5px limegreen;
+  text-shadow: 0px 0px 5px ${({ theme }) => theme.colors.green};
   padding: 40px;
 
   &:hover {
     transform: scale(1.1);
+  }
+  @media ${({ theme }) => theme.mediaQueries.below700} {
+    margin: 0px auto;
+  }
+`;
+
+const NavWrapper = styled.div`
+  margin-left: auto;
+  @media ${({ theme }) => theme.mediaQueries.below700} {
+    display: none;
   }
 `;
 
@@ -36,9 +47,9 @@ const NavItem = styled.span`
   font-size: 26px;
   &:hover {
     transform: scale(1.1);
-    -webkit-text-stroke: 1px #bedb95;
-    color: #28b0c9;
-    text-shadow: 0px 0px 5px limegreen;
+    -webkit-text-stroke: 1px ${({ theme }) => theme.colors.yellow};
+    color: ${({ theme }) => theme.colors.blue};
+    text-shadow: 0px 0px 5px ${({ theme }) => theme.colors.green};
   }
 `;
 
@@ -51,11 +62,18 @@ const RightNavItem = styled(NavItem)`
 `;
 
 const Header = () => {
+  const [closed, setClosed] = useState(false);
   return (
     <StyledNav>
+      <Hamburger
+        closed={closed}
+        setClosed={() => setClosed(!closed)}
+      ></Hamburger>
       <Logo>Where's Waldo</Logo>
-      <LeftNavItem>Play Game</LeftNavItem>
-      <RightNavItem>High Scores</RightNavItem>
+      <NavWrapper>
+        <LeftNavItem>Play Game</LeftNavItem>
+        <RightNavItem>High Scores</RightNavItem>
+      </NavWrapper>
     </StyledNav>
   );
 };
