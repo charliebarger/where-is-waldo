@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 
 const HamburgerIcon = styled.div`
+  display: none;
   @media ${({ theme }) => theme.mediaQueries.below700} {
     width: 40px;
     margin-left: 30px;
     position: absolute;
+    display: block;
     div,
     &:after,
     &:before {
-      display: block;
       background: white;
       content: "";
       display: block;
@@ -30,6 +31,11 @@ const HamburgerIcon = styled.div`
         }
         &:after {
           transform: translateY(-12px) rotate(-135deg);
+        }
+        div,
+        &:after,
+        &:before {
+          transition: all 0.5s;
         }
       `}
   }
