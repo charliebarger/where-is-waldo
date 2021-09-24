@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import Hamburger from "./Hamburger";
+import SlidingNav from "./SlidingNav";
 const StyledHeader = styled.header`
   border-bottom: 2px solid white;
   position: sticky;
@@ -69,6 +70,7 @@ const Header = () => {
         closed={closed}
         setClosed={() => setClosed(!closed)}
       ></Hamburger>
+      <SlidingNav closed={closed}></SlidingNav>
       <Logo>Where's Waldo</Logo>
       <NavWrapper>
         <LeftNavItem>Play Game</LeftNavItem>
