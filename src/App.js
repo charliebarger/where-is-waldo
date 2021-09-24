@@ -1,6 +1,6 @@
 import React from "react";
 import GolbalStyles from "./styles/globalStyles";
-import Header from "./header";
+import Header from "./Header";
 import GameImage from "./GameImage";
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
