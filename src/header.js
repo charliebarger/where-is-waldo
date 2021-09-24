@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import Hamburger from "./Hamburger";
-const StyledNav = styled.nav`
+const StyledHeader = styled.header`
   border-bottom: 2px solid white;
   position: sticky;
   top: 0;
@@ -34,7 +34,7 @@ const Logo = styled.span`
   }
 `;
 
-const NavWrapper = styled.div`
+const NavWrapper = styled.nav`
   margin-left: auto;
   @media ${({ theme }) => theme.mediaQueries.below700} {
     display: none;
@@ -64,7 +64,7 @@ const RightNavItem = styled(NavItem)`
 const Header = () => {
   const [closed, setClosed] = useState(false);
   return (
-    <StyledNav>
+    <StyledHeader>
       <Hamburger
         closed={closed}
         setClosed={() => setClosed(!closed)}
@@ -74,7 +74,7 @@ const Header = () => {
         <LeftNavItem>Play Game</LeftNavItem>
         <RightNavItem>High Scores</RightNavItem>
       </NavWrapper>
-    </StyledNav>
+    </StyledHeader>
   );
 };
 
