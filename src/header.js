@@ -5,7 +5,7 @@ import SlidingNav from "./SlidingNav";
 import { LeftNavItem, RightNavItem, NavItem } from "./NavItems";
 const StyledHeader = styled.header`
   border-bottom: 2px solid white;
-  position: sticky;
+
   top: 0;
   height: 100px;
   background: black;
