@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import Hamburger from "./Hamburger";
 import SlidingNav from "./SlidingNav";
@@ -45,6 +45,17 @@ const NavWrapper = styled.nav`
 
 const Header = () => {
   const [closed, setClosed] = useState(false);
+
+  const closeIcon = (e) => {
+    if (e.target.innerWidth > 700) {
+      setClosed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", closeIcon);
+  }, []);
+
   return (
     <StyledHeader>
       <Hamburger
