@@ -1,25 +1,45 @@
 import React from "react";
 import styled, { css } from "styled-components";
-
+import { NavItem } from "./NavItems";
 const StyledNav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   left: -50%;
+  top: 100px;
+  position: absolute;
+  background: black;
+  border-right: white 2px solid;
+  color: white;
+  min-height: calc(100vh - 100px);
+  width: 50%;
+  transition: all 0.5s;
+  opacity: 0.9;
+
   ${({ closed }) =>
     closed &&
     css`
-    top: 100px;
-    left: 0%;
-    position: absolute;
-    background: white;
-    color: white;
-    min-height: calc(100vh - 100px);
-    width: 50%;
-    transition: all .5s;
-}
+      left: 0%;
     `}
 `;
 
+const NavItemWrapper = styled.div`
+  border-bottom: hsla(0, 0%, 100%, 0.33) solid 1px;
+  width: 100%;
+  text-align: center;
+`;
+
 const SlidingNav = ({ closed }) => {
-  return <StyledNav closed={closed}></StyledNav>;
+  return (
+    <StyledNav closed={closed}>
+      <NavItemWrapper>
+        <NavItem mobile>Play Game</NavItem>
+      </NavItemWrapper>
+      <NavItemWrapper>
+        <NavItem mobile>High Scores</NavItem>
+      </NavItemWrapper>
+    </StyledNav>
+  );
 };
 
 export default SlidingNav;
