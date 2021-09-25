@@ -62,7 +62,7 @@ const Intro = () => {
           Parasites Invaded Our House! Can you Help Me Find Them?
         </SubText>
       </DialogWrapper>
-      <Button>Next</Button>
+      <Button style={{ gridArea: "2 / 2 / 3 / 3" }}>Next</Button>
     </StyledPopUp>
   );
 };

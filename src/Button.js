@@ -4,7 +4,6 @@ import styled from "styled-components";
 const StyledButton = styled.button`
   border-radius: 5px;
   font-size: 28px;
-  grid-area: 2 / 2 / 3 / 3;
   width: 200px;
   margin: auto;
   padding: 5px;
