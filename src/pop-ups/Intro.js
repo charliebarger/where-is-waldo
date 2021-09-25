@@ -52,7 +52,7 @@ const SubText = styled.p`
 
 const Intro = () => {
   return (
-    <StyledPopUp place="1">
+    <StyledPopUp place={1}>
       <ImageWrapper>
         <img alt="rick" src={rick1}></img>
       </ImageWrapper>
