@@ -2,8 +2,10 @@ import React from "react";
 import styled, { css } from "styled-components";
 import rick1 from "./assets/rick1.png";
 const StyledPopUp = styled.div`
+  display: grid;
+  grid-template: 1fr 20px / 1fr 1fr;
   border-radius: 20px;
-  width: 500px;
+  width: 600px;
   height: 400px;
   background: linear-gradient(
     -45deg,
@@ -21,10 +23,20 @@ const StyledPopUp = styled.div`
   border: ${({ theme }) => theme.colors.yellow} solid 5px;
 `;
 
+const ImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  grid-area: 1 / 1 / 3 / 2;
+  height: 100%;
+  width: 100%;
+`;
+
 const PopUp = () => {
   return (
     <StyledPopUp>
-      <img alt="rick" src={rick1}></img>
+      <ImageWrapper>
+        <img alt="rick" src={rick1}></img>
+      </ImageWrapper>
     </StyledPopUp>
   );
 };
