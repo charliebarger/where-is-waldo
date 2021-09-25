@@ -5,7 +5,8 @@ const NavItem = styled.span`
   color: white;
   font-family: Calligraphr;
   font-size: 26px;
-  &:hover {
+  &:hover,
+  .info-slide:active {
     transform: scale(1.1);
     -webkit-text-stroke: 1px ${({ theme }) => theme.colors.yellow};
     color: ${({ theme }) => theme.colors.blue};

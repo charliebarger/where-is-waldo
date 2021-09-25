@@ -19,8 +19,19 @@ const StyledNav = styled.nav`
   ${({ closed }) =>
     closed &&
     css`
-      left: 0%;
+      left: 0;
     `}
+
+  @media ${({ theme }) => theme.mediaQueries.below400} {
+    width: 100%;
+    border-right: none;
+    left: -100%;
+    ${({ closed }) =>
+      closed &&
+      css`
+        left: 0;
+      `}
+  }
 `;
 
 const NavItemWrapper = styled.div`
