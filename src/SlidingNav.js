@@ -15,7 +15,7 @@ const StyledNav = styled.nav`
   width: 50%;
   transition: all 0.5s;
   opacity: 0.9;
-
+  z-index: 100;
   ${({ closed }) =>
     closed &&
     css`

@@ -1,9 +1,9 @@
 import React from "react";
 import GolbalStyles from "./styles/globalStyles";
 import Header from "./Header";
-import GameImage from "./GameImage";
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
+import GameBody from "./GameBody";
 import db from "./firebase.config";
 
 import { collection, addDoc } from "firebase/firestore";
@@ -13,7 +13,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GolbalStyles />
       <Header />
-      <GameImage />
+      <GameBody />
     </ThemeProvider>
   );
 }
