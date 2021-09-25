@@ -13,6 +13,10 @@ html {
     font-family:Calligraphr;
     box-sizing: inherit;
 }
+img{
+    max-width:100%;
+    max-height:100%;
+}
 body{
     background:#32cd323d;
     min-height: 100vh;
