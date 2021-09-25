@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import Hamburger from "./Hamburger";
 import SlidingNav from "./SlidingNav";
+import { LeftNavItem, RightNavItem, NavItem } from "./NavItems";
 const StyledHeader = styled.header`
   border-bottom: 2px solid white;
   position: sticky;
@@ -42,26 +43,6 @@ const NavWrapper = styled.nav`
   }
 `;
 
-const NavItem = styled.span`
-  color: white;
-  font-family: Calligraphr;
-  font-size: 26px;
-  &:hover {
-    transform: scale(1.1);
-    -webkit-text-stroke: 1px ${({ theme }) => theme.colors.yellow};
-    color: ${({ theme }) => theme.colors.blue};
-    text-shadow: 0px 0px 5px ${({ theme }) => theme.colors.green};
-  }
-`;
-
-const LeftNavItem = styled(NavItem)`
-  margin-left: auto;
-`;
-
-const RightNavItem = styled(NavItem)`
-  margin: 0px 50px;
-`;
-
 const Header = () => {
   const [closed, setClosed] = useState(false);
   return (
@@ -73,7 +54,7 @@ const Header = () => {
       <SlidingNav closed={closed}></SlidingNav>
       <Logo>Where's Waldo</Logo>
       <NavWrapper>
-        <LeftNavItem>Play Game</LeftNavItem>
+        <NavItem>Play Game</NavItem>
         <RightNavItem>High Scores</RightNavItem>
       </NavWrapper>
     </StyledHeader>
