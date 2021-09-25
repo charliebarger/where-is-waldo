@@ -10,12 +10,8 @@ const StyledHeader = styled.header`
   height: 100px;
   background: black;
   display: flex;
-
-  /* background: black; */
-
   align-items: center;
   * {
-    white-space: no-wrap;
     cursor: pointer;
   }
 `;
@@ -33,6 +29,9 @@ const Logo = styled.span`
   }
   @media ${({ theme }) => theme.mediaQueries.below700} {
     margin: 0px auto;
+  }
+  @media ${({ theme }) => theme.mediaQueries.below400} {
+    font-size: 32px;
   }
 `;
 
