@@ -5,18 +5,7 @@ import amishCyborg from "../assets/parasites/amishCyborg.png";
 import ghostInAJar from "../assets/parasites/ghostInAJar.png";
 import reverseGiraffe from "../assets/parasites/reverseGiraffe.png";
 import Button from "../Button";
-
-const ImageWrapper = styled.div`
-  height: 150px;
-  width: 150px;
-  padding: 10px;
-  border-radius: 100px;
-  border: ${({ theme }) => theme.colors.yellow} 5px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-`;
+import Parasites from "./Parasite";
 
 const ImageSection = styled.div`
   grid-template-rows: 1 /2;
@@ -38,15 +27,9 @@ const FindParasites = () => {
     <StyledPopUp place={2}>
       <StyledHeader>Find These Parasites!</StyledHeader>
       <ImageSection>
-        <ImageWrapper>
-          <img alt="amish cyborg" src={amishCyborg}></img>
-        </ImageWrapper>
-        <ImageWrapper>
-          <img alt="Ghost In A Jar" src={ghostInAJar}></img>
-        </ImageWrapper>
-        <ImageWrapper>
-          <img alt="Reverse Giraffe" src={reverseGiraffe}></img>
-        </ImageWrapper>
+        <Parasites parasiteName="Amish Cyborg" imgSource={amishCyborg} />
+        <Parasites parasiteName="Ghost In A Jar" imgSource={ghostInAJar} />
+        <Parasites parasiteName="Reverse Giraffe" imgSource={reverseGiraffe} />
       </ImageSection>
       <Button style={{ gridRow: "-1" }}>Play</Button>
     </StyledPopUp>
