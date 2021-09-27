@@ -50,7 +50,7 @@ const SubText = styled.p`
   }
 `;
 
-const Intro = () => {
+const Intro = ({ changeSlide }) => {
   return (
     <StyledPopUp place={1}>
       <ImageWrapper>
@@ -62,7 +62,9 @@ const Intro = () => {
           Parasites Invaded Our House! Can you Help Me Find Them?
         </SubText>
       </DialogWrapper>
-      <Button style={{ gridArea: "2 / 2 / 3 / 3" }}>Next</Button>
+      <Button handleEvent={changeSlide} style={{ gridArea: "2 / 2 / 3 / 3" }}>
+        Next
+      </Button>
     </StyledPopUp>
   );
 };

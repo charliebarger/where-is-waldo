@@ -6,7 +6,7 @@ const StyledPopUp = styled.div`
   border-radius: 20px;
   width: 600px;
   height: 400px;
-  position: absolute;
+
   background: linear-gradient(
     -45deg,
     rgba(40, 176, 201, 0.9) 44%,
@@ -14,12 +14,6 @@ const StyledPopUp = styled.div`
   );
   grid: ${({ place }) =>
     place === 1 ? "1fr 50px / 1fr 1fr" : "auto 1fr 68px / 1fr"};
-  z-index: 1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 40px auto;
   border: ${({ theme }) => theme.colors.yellow} solid 5px;
 `;
 
