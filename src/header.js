@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Hamburger from "./Hamburger";
 import SlidingNav from "./SlidingNav";
-import { LeftNavItem, RightNavItem, NavItem } from "./NavItems";
+import { RightNavItem, NavItem } from "./NavItems";
+
 const StyledHeader = styled.header`
   border-bottom: 2px solid white;
 
-  top: 0;
   height: 100px;
   background: black;
   display: flex;
@@ -42,7 +42,7 @@ const NavWrapper = styled.nav`
   }
 `;
 
-const Header = () => {
+const Header = ({ slide }) => {
   const [closed, setClosed] = useState(false);
 
   const closeIcon = (e) => {
