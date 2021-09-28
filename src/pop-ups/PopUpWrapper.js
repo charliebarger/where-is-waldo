@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Slides = styled.div`
-  display: flex;
+  display: ${({ slide }) => (slide ? "flex" : "none")};
   gap: 20px;
   margin-right: 500px;
   position: absolute;
@@ -35,7 +35,7 @@ const PopUpWrapper = () => {
     <Wrapper>
       <Slides slide={slide}>
         <Intro changeSlide={() => setSlide(2)}></Intro>
-        <FindParasites></FindParasites>
+        <FindParasites changeSlide={() => setSlide("")}></FindParasites>
       </Slides>
     </Wrapper>
   );

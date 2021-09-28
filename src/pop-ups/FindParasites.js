@@ -22,7 +22,7 @@ const StyledHeader = styled.h1`
   color: white;
 `;
 
-const FindParasites = () => {
+const FindParasites = ({ changeSlide }) => {
   return (
     <StyledPopUp place={2}>
       <StyledHeader>Find These Parasites!</StyledHeader>
@@ -31,7 +31,9 @@ const FindParasites = () => {
         <Parasites parasiteName="Ghost In A Jar" imgSource={ghostInAJar} />
         <Parasites parasiteName="Reverse Giraffe" imgSource={reverseGiraffe} />
       </ImageSection>
-      <Button style={{ gridRow: "-1" }}>Play</Button>
+      <Button handleEvent={changeSlide} style={{ gridRow: "-1" }}>
+        Play
+      </Button>
     </StyledPopUp>
   );
 };
