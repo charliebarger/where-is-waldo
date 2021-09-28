@@ -17,6 +17,7 @@ const Body = styled.div`
 `;
 
 const Arrow = styled.div`
+  cursor: pointer;
   /* position: absolute; */
   position: absolute;
   padding: 5px;
