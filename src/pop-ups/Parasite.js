@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const ImageFigure = styled.figure`
   margin: 0px;
@@ -15,6 +15,14 @@ const ImageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background: white;
+
+  ${({ header }) =>
+    header &&
+    css`
+      height: 100px;
+      width: 100px;
+      padding: 15px;
+    `}
 
   &:hover {
     transform: scale(1.1);
@@ -46,14 +54,14 @@ const ImageLabel = styled.figcaption`
   font-size: 22px;
 `;
 
-const Parasites = ({ imgSource, parasiteName }) => {
+const Parasites = ({ imgSource, parasiteName, header }) => {
   console.log(imgSource, parasiteName);
   return (
     <ImageFigure>
-      <ImageWrapper>
+      <ImageWrapper header={header}>
         <img alt={parasiteName} src={imgSource}></img>
       </ImageWrapper>
-      <ImageLabel>{parasiteName}</ImageLabel>
+      {!header && <ImageLabel>{parasiteName}</ImageLabel>}
     </ImageFigure>
   );
 };
