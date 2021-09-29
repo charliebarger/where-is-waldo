@@ -15,7 +15,7 @@ const GameBody = () => {
   return (
     <Body>
       <SideCharacters slide={slide} />
-      <GameImage />
+      <GameImage slide={slide} />
       <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper>
     </Body>
   );
