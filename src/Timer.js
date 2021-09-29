@@ -11,7 +11,7 @@ const StyledTimer = styled.span`
   border: ${({ theme }) => theme.colors.blue} solid 2px;
   padding: 5px 10px;
   border-radius: 10px;
-  @media ${({ theme }) => theme.mediaQueries.below700} {
+  @media ${({ theme }) => theme.mediaQueries.below850} {
     margin-right: 30px;
   }
   @media ${({ theme }) => theme.mediaQueries.below500} {

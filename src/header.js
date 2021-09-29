@@ -28,7 +28,7 @@ const Logo = styled.span`
   &:hover {
     transform: scale(1.1);
   }
-  @media ${({ theme }) => theme.mediaQueries.below700} {
+  @media ${({ theme }) => theme.mediaQueries.below850} {
     margin: 0px auto;
   }
   @media ${({ theme }) => theme.mediaQueries.below500} {
@@ -43,7 +43,7 @@ const Logo = styled.span`
 
 const NavWrapper = styled.nav`
   margin-left: auto;
-  @media ${({ theme }) => theme.mediaQueries.below700} {
+  @media ${({ theme }) => theme.mediaQueries.below850} {
     display: none;
   }
 `;

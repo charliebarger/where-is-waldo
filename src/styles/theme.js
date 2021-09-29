@@ -9,7 +9,8 @@ const theme = {
     yellow: "#bedb95",
   },
   mediaQueries: {
-    below700: maxWidth(850),
+    below850: maxWidth(850),
+    below700: maxWidth(700),
     below500: maxWidth(550),
     below400: maxWidth(400),
   },

@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 const HamburgerIcon = styled.div`
   display: none;
-  @media ${({ theme }) => theme.mediaQueries.below700} {
+  @media ${({ theme }) => theme.mediaQueries.below850} {
     width: 40px;
     margin-left: 30px;
 

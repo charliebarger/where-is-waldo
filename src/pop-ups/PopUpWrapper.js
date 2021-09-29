@@ -7,13 +7,36 @@ const Wrapper = styled.div`
   height: 400px;
   overflow: hidden;
   z-index: 10;
+  /* top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  /* margin: 40px auto; */
+  position: absolute;
+  transition: all 0.25s;
+  display: flex;
+`;
+
+const TryIT = styled.div`
+  display: ${({ slide }) => (slide ? "flex" : "none")};
+  justify-content: center;
+  position: absolute;
+  z-index: 10;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: 40px auto;
-  position: absolute;
-  display: ${({ slide }) => (slide ? "flex" : "none")};
+  transform-origin: center top;
+  @media ${({ theme }) => theme.mediaQueries.below700} {
+    transform: scale(0.8);
+  }
+  @media ${({ theme }) => theme.mediaQueries.below500} {
+    transform: scale(0.6);
+  }
+  @media ${({ theme }) => theme.mediaQueries.below400} {
+    transform: scale(0.45);
+  }
 `;
 
 const Slides = styled.div`
@@ -21,7 +44,7 @@ const Slides = styled.div`
   gap: 20px;
   margin-right: 500px;
   position: absolute;
-  transition: all 2s;
+  transition: all 1s;
 
   ${({ slide }) =>
     slide === 2 &&
@@ -32,12 +55,14 @@ const Slides = styled.div`
 const PopUpWrapper = ({ slide, setSlide }) => {
   console.log("rerender");
   return (
-    <Wrapper slide={slide}>
-      <Slides slide={slide}>
-        <Intro changeSlide={() => setSlide(2)}></Intro>
-        <FindParasites changeSlide={() => setSlide("")}></FindParasites>
-      </Slides>
-    </Wrapper>
+    <TryIT slide={slide}>
+      <Wrapper slide={slide}>
+        <Slides slide={slide}>
+          <Intro changeSlide={() => setSlide(2)}></Intro>
+          <FindParasites changeSlide={() => setSlide("")}></FindParasites>
+        </Slides>
+      </Wrapper>
+    </TryIT>
   );
 };
 
