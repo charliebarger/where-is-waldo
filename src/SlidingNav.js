@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { NavItem } from "./NavItems";
 const StyledNav = styled.nav`
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

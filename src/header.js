@@ -31,8 +31,13 @@ const Logo = styled.span`
   @media ${({ theme }) => theme.mediaQueries.below700} {
     margin: 0px auto;
   }
+  @media ${({ theme }) => theme.mediaQueries.below500} {
+    font-size: 28px;
+    padding: 40px 20px;
+  }
   @media ${({ theme }) => theme.mediaQueries.below400} {
-    font-size: 32px;
+    font-size: 24px;
+    padding: 40px 20px;
   }
 `;
 

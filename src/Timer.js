@@ -11,6 +11,16 @@ const StyledTimer = styled.span`
   border: ${({ theme }) => theme.colors.blue} solid 2px;
   padding: 5px 10px;
   border-radius: 10px;
+  @media ${({ theme }) => theme.mediaQueries.below700} {
+    margin-right: 30px;
+  }
+  @media ${({ theme }) => theme.mediaQueries.below500} {
+    font-size: 22px;
+  }
+  @media ${({ theme }) => theme.mediaQueries.below400} {
+    font-size: 16px;
+    margin-right: 30px;
+  }
 `;
 
 const Timer = ({ children }) => {

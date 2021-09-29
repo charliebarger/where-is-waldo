@@ -6,7 +6,7 @@ const HamburgerIcon = styled.div`
   @media ${({ theme }) => theme.mediaQueries.below700} {
     width: 40px;
     margin-left: 30px;
-    position: absolute;
+
     display: block;
     div,
     &:after,
@@ -18,6 +18,14 @@ const HamburgerIcon = styled.div`
       width: 100%;
       margin: 7px 0px;
       transition: all 0.5s;
+    }
+
+    @media ${({ theme }) => theme.mediaQueries.below500} {
+      transform: scale(0.9);
+    }
+
+    @media ${({ theme }) => theme.mediaQueries.below400} {
+      transform: scale(0.8);
     }
 
     ${({ closed }) =>
