@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PopUpWrapper from "./pop-ups/PopUpWrapper";
 import SideCharacters from "./SideCharacters";
 const Body = styled.div`
+  overflow-x: hidden;
   width: 100%;
   min-height: calc(100vh - 100px);
   position: relative;
