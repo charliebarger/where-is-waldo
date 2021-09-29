@@ -14,7 +14,7 @@ const StyledTimer = styled.span`
   @media ${({ theme }) => theme.mediaQueries.below850} {
     margin-right: 30px;
   }
-  @media ${({ theme }) => theme.mediaQueries.below500} {
+  @media ${({ theme }) => theme.mediaQueries.below550} {
     font-size: 22px;
   }
   @media ${({ theme }) => theme.mediaQueries.below400} {

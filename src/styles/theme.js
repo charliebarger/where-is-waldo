@@ -11,7 +11,7 @@ const theme = {
   mediaQueries: {
     below850: maxWidth(850),
     below700: maxWidth(700),
-    below500: maxWidth(550),
+    below550: maxWidth(550),
     below400: maxWidth(400),
   },
 };

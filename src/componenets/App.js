@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import GolbalStyles from "./styles/globalStyles";
-import Header from "./Header";
-import theme from "./styles/theme";
+import GolbalStyles from "../styles/globalStyles";
+import Header from "./header/Header";
+import theme from "../styles/theme";
 import { ThemeProvider } from "styled-components";
-import GameBody from "./GameBody";
-import db from "./firebase.config";
+import GameBody from "../GameBody";
+import db from "../firebase.config";
 
 import { collection, addDoc } from "firebase/firestore";
 

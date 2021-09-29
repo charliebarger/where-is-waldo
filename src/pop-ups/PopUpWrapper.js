@@ -31,7 +31,7 @@ const TryIT = styled.div`
   @media ${({ theme }) => theme.mediaQueries.below700} {
     transform: scale(0.8);
   }
-  @media ${({ theme }) => theme.mediaQueries.below500} {
+  @media ${({ theme }) => theme.mediaQueries.below550} {
     transform: scale(0.6);
   }
   @media ${({ theme }) => theme.mediaQueries.below400} {

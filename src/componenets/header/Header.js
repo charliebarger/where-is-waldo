@@ -1,43 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Hamburger from "./Hamburger";
-import SlidingNav from "./SlidingNav";
-import { RightNavItem, NavItem } from "./NavItems";
+import Hamburger from "./navigation/Hamburger";
+import SlidingNav from "./navigation/SlidingNav";
+import { RightNavItem, NavItem } from "../../NavItems";
 import Timer from "./Timer";
+import Logo from "./Logo";
+import Nav from "./navigation/Nav";
 
 const StyledHeader = styled.header`
   border-bottom: 2px solid white;
-
   height: 100px;
   background: black;
   display: flex;
   align-items: center;
   * {
     cursor: pointer;
-  }
-`;
-
-const Logo = styled.span`
-  -webkit-text-stroke: 1.5px ${({ theme }) => theme.colors.yellow};
-  color: ${({ theme }) => theme.colors.blue};
-  font-size: 40px;
-  font-family: Get Schwifty;
-  text-shadow: 0px 0px 5px ${({ theme }) => theme.colors.green};
-  padding: 40px;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-  @media ${({ theme }) => theme.mediaQueries.below850} {
-    margin: 0px auto;
-  }
-  @media ${({ theme }) => theme.mediaQueries.below500} {
-    font-size: 28px;
-    padding: 40px 20px;
-  }
-  @media ${({ theme }) => theme.mediaQueries.below400} {
-    font-size: 24px;
-    padding: 40px 20px;
   }
 `;
 
@@ -51,8 +28,9 @@ const NavWrapper = styled.nav`
 const Header = ({ slide }) => {
   const [closed, setClosed] = useState(false);
 
+  //if the screen width is greater than 850 then close the Hamburger Nav
   const closeIcon = (e) => {
-    if (e.target.innerWidth > 700) {
+    if (e.target.innerWidth > 850) {
       setClosed(false);
     }
   };
@@ -69,10 +47,7 @@ const Header = ({ slide }) => {
       ></Hamburger>
       <SlidingNav closed={closed}></SlidingNav>
       <Logo>Where's Waldo</Logo>
-      <NavWrapper>
-        <NavItem>Play Game</NavItem>
-        <RightNavItem>High Scores</RightNavItem>
-      </NavWrapper>
+      <Nav />
       {!slide && <Timer>00:00:17</Timer>}
     </StyledHeader>
   );

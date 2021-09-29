@@ -1,7 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { NavItem } from "./NavItems";
-const StyledNav = styled.nav`
+import NavItem from "./NavItem";
+
+const StyledSlidingNav = styled.nav`
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -43,14 +44,14 @@ const NavItemWrapper = styled.div`
 
 const SlidingNav = ({ closed }) => {
   return (
-    <StyledNav closed={closed}>
+    <StyledSlidingNav closed={closed}>
       <NavItemWrapper>
         <NavItem mobile>Play Game</NavItem>
       </NavItemWrapper>
       <NavItemWrapper>
         <NavItem mobile>High Scores</NavItem>
       </NavItemWrapper>
-    </StyledNav>
+    </StyledSlidingNav>
   );
 };
 

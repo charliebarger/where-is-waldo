@@ -20,7 +20,7 @@ const HamburgerIcon = styled.div`
       transition: all 0.5s;
     }
 
-    @media ${({ theme }) => theme.mediaQueries.below500} {
+    @media ${({ theme }) => theme.mediaQueries.below550} {
       transform: scale(0.9);
     }
 
@@ -50,7 +50,6 @@ const HamburgerIcon = styled.div`
 `;
 
 const Hamburger = ({ closed, setClosed }) => {
-  console.log(closed);
   return (
     <HamburgerIcon closed={closed} onClick={() => setClosed(!closed)}>
       <div />
