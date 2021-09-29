@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Hamburger from "./Hamburger";
 import SlidingNav from "./SlidingNav";
 import { RightNavItem, NavItem } from "./NavItems";
+import Timer from "./Timer";
 
 const StyledHeader = styled.header`
   border-bottom: 2px solid white;
@@ -67,6 +68,7 @@ const Header = ({ slide }) => {
         <NavItem>Play Game</NavItem>
         <RightNavItem>High Scores</RightNavItem>
       </NavWrapper>
+      {!slide && <Timer>00:00:17</Timer>}
     </StyledHeader>
   );
 };
