@@ -11,8 +11,7 @@ const Body = styled.div`
   z-index: 0;
 `;
 
-const GameBody = () => {
-  const [slide, setSlide] = useState(1);
+const GameBody = ({ slide, setSlide }) => {
   return (
     <Body>
       <SideCharacters slide={slide} />

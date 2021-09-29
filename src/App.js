@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GolbalStyles from "./styles/globalStyles";
 import Header from "./Header";
 import theme from "./styles/theme";
@@ -9,11 +9,12 @@ import db from "./firebase.config";
 import { collection, addDoc } from "firebase/firestore";
 
 function App() {
+  const [slide, setSlide] = useState(1);
   return (
     <ThemeProvider theme={theme}>
       <GolbalStyles />
-      <Header />
-      <GameBody />
+      <Header slide={slide} />
+      <GameBody slide={slide} setSlide={setSlide} />
     </ThemeProvider>
   );
 }
