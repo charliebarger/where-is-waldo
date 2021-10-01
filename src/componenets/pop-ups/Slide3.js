@@ -72,6 +72,40 @@ const ButtonPosition = styled.div`
   display: flex;
 `;
 
+const NameSection = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: space-around;
+`;
+
+const NameInput = styled.input`
+  outline: none;
+  display: flex;
+  margin: auto;
+  background: none;
+  border: 2px solid white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: #00000070;
+  font-size: 18px;
+  margin-top: 20px;
+  &::placeholder {
+    color: white;
+  }
+  color: white;
+`;
+
+const InputWrapper = styled.div``;
+const NameSectionSpan = styled.span`
+  font-size: 27px;
+  text-align: center;
+  display: block;
+  margin-bottom: 10px;
+`;
 const Slide3 = ({ changeSlide }) => {
   return (
     <StyledPopUp place={3}>
@@ -82,6 +116,16 @@ const Slide3 = ({ changeSlide }) => {
         <PopUpHead>Wubba Lubba Dub Dub!</PopUpHead>
         <Timer finished>00:01:24</Timer>
       </DialogWrapper>
+      <NameSection>
+        <NameSectionSpan>
+          Let's Get You on the Global Leaderboard!
+        </NameSectionSpan>
+
+        <InputWrapper>
+          <NameSectionSpan>What's your name Bruh?</NameSectionSpan>
+          <NameInput placeholder="Username" />
+        </InputWrapper>
+      </NameSection>
       <ButtonPosition>
         <Button handleEvent={null}>Submit</Button>
       </ButtonPosition>
