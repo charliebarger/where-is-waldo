@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
-import FindParasites from "./FindParasites";
-import Intro from "./Intro";
+import FindParasites from "./Slide2";
+import Intro from "./Slide1";
+import Slide3 from "./Slide3";
 const Wrapper = styled.div`
   width: 600px;
   height: 400px;
@@ -58,8 +59,14 @@ const PopUpWrapper = ({ slide, setSlide }) => {
     <TryIT slide={slide}>
       <Wrapper slide={slide}>
         <Slides slide={slide}>
-          <Intro changeSlide={() => setSlide(2)}></Intro>
-          <FindParasites changeSlide={() => setSlide("")}></FindParasites>
+          {slide && slide !== 3 ? (
+            <>
+              <Intro changeSlide={() => setSlide(2)}></Intro>
+              <FindParasites changeSlide={() => setSlide("")}></FindParasites>
+            </>
+          ) : (
+            <Slide3>Yooo</Slide3>
+          )}
         </Slides>
       </Wrapper>
     </TryIT>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import amishCyborgCloseUp from "./assets/parasites/amishCyborgCloseUp.png";
-import ghostInAJar from "./assets/parasites/ghostInAJar.png";
-import reverseGiraffeCloseUp from "./assets/parasites/reverseGiraffeCloseUp.png";
-import Parasites from "./pop-ups/Parasite";
-import arrow from "./assets/arrow.png";
+import amishCyborgCloseUp from "../../assets/parasites/amishCyborgCloseUp.png";
+import ghostInAJar from "../../assets/parasites/ghostInAJar.png";
+import reverseGiraffeCloseUp from "../../assets/parasites/reverseGiraffeCloseUp.png";
+import Parasites from "../pop-ups/Parasite";
+import arrow from "../../assets/arrow.png";
 const Arrow = styled.div`
   cursor: pointer;
   /* position: absolute; */

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Hamburger from "./navigation/Hamburger";
 import SlidingNav from "./navigation/SlidingNav";
-import { RightNavItem, NavItem } from "../../NavItems";
 import Timer from "./Timer";
 import Logo from "./Logo";
 import Nav from "./navigation/Nav";

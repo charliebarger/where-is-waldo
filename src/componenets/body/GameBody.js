@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import GameImage from "./GameImage";
 import styled from "styled-components";
-import PopUpWrapper from "./pop-ups/PopUpWrapper";
+import PopUpWrapper from "../pop-ups/PopUpWindow";
 import SideCharacters from "./SideCharacters";
 const Body = styled.div`
   overflow-x: hidden;

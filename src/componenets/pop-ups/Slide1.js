@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import StyledPopUp from "./PopUp";
-import rick1 from "../assets/rick1.png";
+import StyledPopUp from "./Slides";
+import rick1 from "../../assets/rick1.png";
 import Button from "../Button";
 
 const ImageWrapper = styled.div`
@@ -50,7 +50,7 @@ const SubText = styled.p`
   }
 `;
 
-const Intro = ({ changeSlide }) => {
+const Slide1 = ({ changeSlide }) => {
   return (
     <StyledPopUp place={1}>
       <ImageWrapper>
@@ -69,4 +69,4 @@ const Intro = ({ changeSlide }) => {
   );
 };
 
-export default Intro;
+export default Slide1;

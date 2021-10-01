@@ -1,9 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const StyledTimer = styled.span`
   box-shadow: 1px 1px 10px ${({ theme }) => theme.colors.green};
   cursor: default;
+  background: black;
   color: white;
   font-family: "Gemunu Libre", sans-serif;
   font-size: 26px;
@@ -21,10 +22,17 @@ const StyledTimer = styled.span`
     font-size: 16px;
     margin-right: 30px;
   }
+  ${({ finished }) =>
+    finished &&
+    css`
+      box-shadow: none;
+      border: white solid 2px;
+      margin: 0px;
+    `}
 `;
 
-const Timer = ({ children }) => {
-  return <StyledTimer>{children}</StyledTimer>;
+const Timer = ({ children, finished }) => {
+  return <StyledTimer finished={finished}>{children}</StyledTimer>;
 };
 
 export default Timer;
