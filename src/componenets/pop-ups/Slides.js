@@ -13,7 +13,11 @@ const StyledPopUp = styled.div`
     rgba(50, 205, 50, 0.9) 95%
   );
   grid: ${({ place }) =>
-    place === 1 ? "1fr 50px / 1fr 1fr" : "auto 1fr 68px / 1fr"};
+    place === 1
+      ? "1fr 50px / 1fr 1fr"
+      : place === 2
+      ? "auto 1fr 68px / 1fr"
+      : "auto 1fr 50px / 1fr 2fr"};
   border: ${({ theme }) => theme.colors.yellow} solid 5px;
 `;
 

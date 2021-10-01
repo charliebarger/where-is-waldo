@@ -15,28 +15,23 @@ const ImageWrapper = styled.div`
 
 const DialogWrapper = styled.div`
   grid-area: 1 / 1 / 2 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const PopUpHead = styled.h1`
-  margin: 0px;
-  overflow: hidden;
+  margin: 0px auto;
   color: white;
-  font-size: 37px;
-  white-space: nowrap;
-  animation: typing 1.5s steps(40, end);
-  @keyframes typing {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
+  font-size: 40px;
+  position: relative;
+  top: 2px;
 `;
 
 const SubText = styled.div`
-  font-size: 28px;
-  text-align: center;
+  border: white solid 3px;
+  font-size: 34px;
+  margin: 10px;
   animation: hi 1s ease-in forwards;
   animation-delay: 1.5s;
   opacity: 0;
@@ -50,21 +45,46 @@ const SubText = styled.div`
   }
 `;
 
+const FinalTime = styled.div`
+  box-shadow: 2px 2px 5px black;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  background: black;
+  border-radius: 10px;
+  border: white solid 2px;
+  * {
+    font-size: 22px;
+    color: white;
+  }
+`;
+
+const TimeLabel = styled.span`
+  position: relative;
+  top: 2px;
+  font-size: 28px;
+  color: white;
+  margin-right: 5px;
+`;
+
+const ButtonPosition = styled.div`
+  grid-area: 3/2;
+  display: flex;
+`;
+
 const Slide3 = ({ changeSlide }) => {
   return (
-    <StyledPopUp place={1}>
+    <StyledPopUp place={3}>
       <ImageWrapper>
         <img alt="rick" src={rick1}></img>
       </ImageWrapper>
       <DialogWrapper>
         <PopUpHead>Wubba Lubba Dub Dub!</PopUpHead>
+        <Timer finished>00:01:24</Timer>
       </DialogWrapper>
-      <SubText>
-        You Found Them all in <Timer finished>00:01:24</Timer>
-      </SubText>
-      <Button handleEvent={changeSlide} style={{ gridArea: "2 / 2 / 3 / 3" }}>
-        Submit
-      </Button>
+      <ButtonPosition>
+        <Button handleEvent={null}>Submit</Button>
+      </ButtonPosition>
     </StyledPopUp>
   );
 };

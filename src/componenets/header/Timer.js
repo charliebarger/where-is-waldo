@@ -25,9 +25,12 @@ const StyledTimer = styled.span`
   ${({ finished }) =>
     finished &&
     css`
-      box-shadow: none;
+      margin: 0px !important;
+      margin-left: 5px !important;
+      color: #e73f40;
+      box-shadow: 2px 2px 5px black;
       border: white solid 2px;
-      margin: 0px;
+      font-size: 24px;
     `}
 `;
 
