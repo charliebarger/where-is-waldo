@@ -18,7 +18,7 @@ const NameInput = styled.input`
   color: white;
 `;
 
-const SetUsername = () => {
+const SetUsername = ({ formId }) => {
   const [formValue, setFormValue] = useState("");
 
   const submitForm = (e) => {
@@ -27,7 +27,7 @@ const SetUsername = () => {
   };
 
   return (
-    <form onSubmit={submitForm} id="usernameForm">
+    <form onSubmit={submitForm} id={formId}>
       <NameInput
         value={formValue}
         onChange={(e) => setFormValue(e.target.value)}

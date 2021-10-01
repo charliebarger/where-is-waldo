@@ -44,23 +44,6 @@ const NameSection = styled.div`
   align-content: space-around;
 `;
 
-const NameInput = styled.input`
-  outline: none;
-  display: flex;
-  margin: auto;
-  background: none;
-  border: 2px solid white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  background: #00000070;
-  font-size: 18px;
-  margin-top: 20px;
-  &::placeholder {
-    color: white;
-  }
-  color: white;
-`;
-
 const InputWrapper = styled.div``;
 const NameSectionSpan = styled.span`
   font-size: 27px;
@@ -69,6 +52,7 @@ const NameSectionSpan = styled.span`
   margin-bottom: 10px;
 `;
 const Slide3 = ({ changeSlide }) => {
+  const formId = "usernameForm";
   return (
     <StyledPopUp place={3}>
       <ImageWrapper>
@@ -84,11 +68,11 @@ const Slide3 = ({ changeSlide }) => {
         </NameSectionSpan>
         <InputWrapper>
           <NameSectionSpan>What's your name Bruh?</NameSectionSpan>
-          <SetUsername />
+          <SetUsername formId={formId} />
         </InputWrapper>
       </NameSection>
       <ButtonPosition>
-        <Button type="submit" form="usernameForm" className="submit">
+        <Button type="submit" form={formId} className="submit">
           Submit
         </Button>
       </ButtonPosition>
