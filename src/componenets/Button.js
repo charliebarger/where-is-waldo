@@ -21,8 +21,12 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ children, handleEvent }) => {
-  return <StyledButton onClick={handleEvent}>{children}</StyledButton>;
+const Button = ({ children, handleEvent, type, form }) => {
+  return (
+    <StyledButton type={type} form={form} onClick={handleEvent}>
+      {children}
+    </StyledButton>
+  );
 };
 
 export default Button;
