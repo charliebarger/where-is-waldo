@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PopUpWrapper from "../pop-ups/PopUpWindow";
 import SideCharacters from "./SideCharacters";
 import TurnPhone from "./TurnPhone";
+import HighScores from "./HighScores";
 const Body = styled.div`
   overflow-x: hidden;
   width: 100%;
@@ -31,10 +32,11 @@ const GameBody = ({ slide, setSlide }) => {
 
   return (
     <Body>
-      {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
+      {/* {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
       <SideCharacters slide={slide} />
       <GameImage slide={slide} />
-      <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper>
+      <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper> */}
+      <HighScores></HighScores>
     </Body>
   );
 };
