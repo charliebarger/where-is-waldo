@@ -35,7 +35,7 @@ const Header = ({ slide, closed, setClosed }) => {
         closed={closed}
         setClosed={() => setClosed(!closed)}
       ></Hamburger>
-      <SlidingNav closed={closed}></SlidingNav>
+      <SlidingNav setClosed={setClosed} closed={closed}></SlidingNav>
       <Logo>Where's Waldo</Logo>
       <Nav />
       {!slide && <Timer>00:00:17</Timer>}

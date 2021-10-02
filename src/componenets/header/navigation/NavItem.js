@@ -37,9 +37,10 @@ const StyledNavItem = styled(NavLink)`
     `}
 `;
 
-const NavItem = ({ children, side, mobile, linkPath }) => {
+const NavItem = ({ children, side, mobile, linkPath, setClosed }) => {
   return (
     <StyledNavItem
+      onClick={setClosed ? () => setClosed(false) : null}
       to={`${linkPath}`}
       exact
       activeClassName="active"

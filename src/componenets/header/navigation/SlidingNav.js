@@ -42,16 +42,16 @@ const NavItemWrapper = styled.div`
   text-align: center;
 `;
 
-const SlidingNav = ({ closed }) => {
+const SlidingNav = ({ closed, setClosed }) => {
   return (
     <StyledSlidingNav closed={closed}>
       <NavItemWrapper>
-        <NavItem linkPath={"/"} mobile>
+        <NavItem setClosed={setClosed} linkPath={"/"} mobile>
           Play Game
         </NavItem>
       </NavItemWrapper>
       <NavItemWrapper>
-        <NavItem linkPath={"/high-scores"} mobile>
+        <NavItem setClosed={setClosed} linkPath={"/high-scores"} mobile>
           High Scores
         </NavItem>
       </NavItemWrapper>
