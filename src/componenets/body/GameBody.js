@@ -5,6 +5,7 @@ import PopUpWrapper from "../pop-ups/PopUpWindow";
 import SideCharacters from "./SideCharacters";
 import TurnPhone from "./TurnPhone";
 import HighScores from "./HighScores";
+import { Switch, Route } from "react-router-dom";
 const Body = styled.div`
   overflow-x: hidden;
   width: 100%;
@@ -32,11 +33,17 @@ const GameBody = ({ slide, setSlide }) => {
 
   return (
     <Body>
-      {/* {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
-      <SideCharacters slide={slide} />
-      <GameImage slide={slide} />
-      <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper> */}
-      <HighScores></HighScores>
+      <Switch>
+        <Route exact path="/">
+          {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
+          <SideCharacters slide={slide} />
+          <GameImage slide={slide} />
+          <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper>
+        </Route>
+        <Route path="/high-scores">
+          <HighScores></HighScores>
+        </Route>
+      </Switch>
     </Body>
   );
 };

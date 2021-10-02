@@ -12,8 +12,12 @@ const NavWrapper = styled.nav`
 const Nav = () => {
   return (
     <NavWrapper>
-      <NavItem side="left">Play Game</NavItem>
-      <NavItem side="right">High Scores</NavItem>
+      <NavItem linkPath={"/"} side="left">
+        Play Game
+      </NavItem>
+      <NavItem linkPath={"/high-scores"} side="right">
+        High Scores
+      </NavItem>
     </NavWrapper>
   );
 };

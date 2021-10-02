@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const StyledNavItem = styled.span`
+const StyledNavItem = styled(Link)`
   display: inline-block;
   color: white;
   font-family: Calligraphr;
@@ -34,9 +35,9 @@ const StyledNavItem = styled.span`
     `}
 `;
 
-const NavItem = ({ children, side, mobile }) => {
+const NavItem = ({ children, side, mobile, linkPath }) => {
   return (
-    <StyledNavItem mobile={mobile} side={side}>
+    <StyledNavItem to={`${linkPath}`} mobile={mobile} side={side}>
       {children}
     </StyledNavItem>
   );

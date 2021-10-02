@@ -4,6 +4,7 @@ import Header from "./header/Header";
 import theme from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import GameBody from "./body/GameBody";
+import { HashRouter as Router } from "react-router-dom";
 import db from "./firebase.config";
 
 import { collection, addDoc } from "firebase/firestore";
@@ -11,11 +12,13 @@ import { collection, addDoc } from "firebase/firestore";
 function App() {
   const [slide, setSlide] = useState(1);
   return (
-    <ThemeProvider theme={theme}>
-      <GolbalStyles />
-      <Header slide={slide} />
-      <GameBody slide={slide} setSlide={setSlide} />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <GolbalStyles />
+        <Header slide={slide} />
+        <GameBody slide={slide} setSlide={setSlide} />
+      </ThemeProvider>
+    </Router>
   );
 }
 

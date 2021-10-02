@@ -46,10 +46,14 @@ const SlidingNav = ({ closed }) => {
   return (
     <StyledSlidingNav closed={closed}>
       <NavItemWrapper>
-        <NavItem mobile>Play Game</NavItem>
+        <NavItem linkPath={"/"} mobile>
+          Play Game
+        </NavItem>
       </NavItemWrapper>
       <NavItemWrapper>
-        <NavItem mobile>High Scores</NavItem>
+        <NavItem linkPath={"/high-scores"} mobile>
+          High Scores
+        </NavItem>
       </NavItemWrapper>
     </StyledSlidingNav>
   );
