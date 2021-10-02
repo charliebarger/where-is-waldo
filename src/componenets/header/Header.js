@@ -17,16 +17,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-const NavWrapper = styled.nav`
-  margin-left: auto;
-  @media ${({ theme }) => theme.mediaQueries.below850} {
-    display: none;
-  }
-`;
-
-const Header = ({ slide }) => {
-  const [closed, setClosed] = useState(false);
-
+const Header = ({ slide, closed, setClosed }) => {
   //if the screen width is greater than 850 then close the Hamburger Nav
   const closeIcon = (e) => {
     if (e.target.innerWidth > 850) {

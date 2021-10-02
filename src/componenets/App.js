@@ -11,12 +11,13 @@ import { collection, addDoc } from "firebase/firestore";
 
 function App() {
   const [slide, setSlide] = useState(1);
+  const [closed, setClosed] = useState(false);
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GolbalStyles />
-        <Header slide={slide} />
-        <GameBody slide={slide} setSlide={setSlide} />
+        <Header slide={slide} closed={closed} setClosed={setClosed} />
+        <GameBody slide={slide} setSlide={setSlide} setClosed={setClosed} />
       </ThemeProvider>
     </Router>
   );

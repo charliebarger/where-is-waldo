@@ -14,7 +14,7 @@ const Body = styled.div`
   z-index: 0;
 `;
 
-const GameBody = ({ slide, setSlide }) => {
+const GameBody = ({ slide, setSlide, setClosed }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
 
@@ -31,7 +31,7 @@ const GameBody = ({ slide, setSlide }) => {
   }, [Xclicked]);
 
   return (
-    <Body>
+    <Body onClick={() => setClosed(false)}>
       <Switch>
         <Route exact path="/">
           {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
