@@ -2,6 +2,9 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 const StyledTimer = styled.span`
+  &&& {
+    cursor: default;
+  }
   box-shadow: 1px 1px 10px ${({ theme }) => theme.colors.green};
   cursor: default;
   background: black;

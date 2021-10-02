@@ -9,7 +9,7 @@ import db from "./firebase.config";
 import { collection, addDoc } from "firebase/firestore";
 
 function App() {
-  const [slide, setSlide] = useState(3);
+  const [slide, setSlide] = useState(1);
   return (
     <ThemeProvider theme={theme}>
       <GolbalStyles />

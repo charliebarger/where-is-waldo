@@ -6,7 +6,7 @@ import reverseGiraffeCloseUp from "../../assets/parasites/reverseGiraffeCloseUp.
 import Parasites from "../pop-ups/Parasite";
 import arrow from "../../assets/arrow.png";
 const Arrow = styled.div`
-  cursor: pointer;
+  cursor: ${({ slide }) => (slide ? "default" : "pointer")};
   /* position: absolute; */
   position: absolute;
   padding: 5px;
@@ -59,6 +59,7 @@ const SideCharacters = ({ slide }) => {
   return (
     <>
       <Arrow
+        slide={slide}
         onClick={() => (!slide ? setClosed(!closed) : undefined)}
         closed={closed}
       >
