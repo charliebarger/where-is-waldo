@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const ScoreBoardWrapper = styled.div`
@@ -47,7 +47,11 @@ const UserNames = styled.div`
   font-size: 24px;
 `;
 
-const HighScores = () => {
+const HighScores = ({ setSlide }) => {
+  useEffect(() => {
+    setSlide(1);
+  }, []);
+
   const winners = [
     { name: "Rick", time: "00:10:01" },
     { name: "Morty", time: "00:10:01" },

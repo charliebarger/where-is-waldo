@@ -27,7 +27,6 @@ const GameBody = ({ slide, setSlide }) => {
   };
   useEffect(() => {
     closePopUp(window.screen.width);
-    console.log("hi");
     window.addEventListener("resize", (e) => closePopUp(e.target.innerWidth));
   }, [Xclicked]);
 
@@ -41,7 +40,7 @@ const GameBody = ({ slide, setSlide }) => {
           <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper>
         </Route>
         <Route path="/high-scores">
-          <HighScores></HighScores>
+          <HighScores setSlide={setSlide}></HighScores>
         </Route>
       </Switch>
     </Body>
