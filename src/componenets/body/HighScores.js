@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const ScoreBoardWrapper = styled.div`
   border: ${({ theme }) => theme.colors.blue} 2px solid;
@@ -10,6 +10,10 @@ const ScoreBoardWrapper = styled.div`
   background: white;
   box-shadow: 5px 5px 10px #000000;
   margin-bottom: 100px;
+
+  @media ${({ theme }) => theme.mediaQueries.below400} {
+    width: 90%;
+  }
 `;
 const ScoreBoard = styled.div`
   width: 100%;
@@ -30,9 +34,14 @@ const ScoreHeader = styled.h1`
 `;
 
 const GridHeader = styled.div`
+  font-size: 26px;
   padding-right: 20px;
-  @media ${({ theme }) => theme.mediaQueries.below550} {
-    font-size: 22px;
+  @media ${({ theme }) => theme.mediaQueries.below700} {
+    ${({ place }) =>
+      place &&
+      css`
+        font-size: 0px;
+      `}
   }
 `;
 
@@ -44,7 +53,17 @@ const Numbers = styled.div`
 `;
 
 const UserNames = styled.div`
-  font-size: 24px;
+  font-size: 22px;
+  @media ${({ theme }) => theme.mediaQueries.below550} {
+    ${({ place }) =>
+      !place &&
+      css`
+        font-size: 22px;
+      `}
+    @media ${({ theme }) => theme.mediaQueries.below400} {
+      font-size: 18px;
+    }
+  }
 `;
 
 const HighScores = ({ setSlide }) => {
@@ -69,7 +88,7 @@ const HighScores = ({ setSlide }) => {
       <ScoreHeader>High Scores</ScoreHeader>
       <ScoreBoardWrapper>
         <ScoreBoard>
-          <GridHeader>Place</GridHeader>
+          <GridHeader place>Place</GridHeader>
           <GridHeader>Name</GridHeader>
           <GridHeader>Time</GridHeader>
           {winners.map((winner, index) => {

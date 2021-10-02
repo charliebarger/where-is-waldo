@@ -20,7 +20,10 @@ img{
 body{
     background:#32cd323d;
     min-height: 100vh;
+    position:relative;
 }
+
+
 `;
 
 export default GolbalStyles;

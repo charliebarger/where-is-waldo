@@ -32,6 +32,7 @@ const Header = ({ slide, closed, setClosed }) => {
   return (
     <StyledHeader>
       <Hamburger
+        slide={slide}
         closed={closed}
         setClosed={() => setClosed(!closed)}
       ></Hamburger>

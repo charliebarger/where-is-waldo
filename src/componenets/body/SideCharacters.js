@@ -31,6 +31,7 @@ const Arrow = styled.div`
 `;
 
 const CharacterWrapper = styled.div`
+  padding-bottom: 50px;
   margin-left: auto;
   gap: 20px;
   display: flex;

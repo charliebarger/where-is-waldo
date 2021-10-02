@@ -46,12 +46,22 @@ const HamburgerIcon = styled.div`
           transition: all 0.5s;
         }
       `}
+
+    ${({ slide }) =>
+      slide &&
+      css`
+        position: absolute;
+      `}
   }
 `;
 
-const Hamburger = ({ closed, setClosed }) => {
+const Hamburger = ({ closed, setClosed, slide }) => {
   return (
-    <HamburgerIcon closed={closed} onClick={() => setClosed(!closed)}>
+    <HamburgerIcon
+      slide={slide}
+      closed={closed}
+      onClick={() => setClosed(!closed)}
+    >
       <div />
     </HamburgerIcon>
   );
