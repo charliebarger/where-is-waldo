@@ -10,7 +10,7 @@ import db from "./firebase.config";
 import { collection, addDoc } from "firebase/firestore";
 
 function App() {
-  const [slide, setSlide] = useState(1);
+  const [slide, setSlide] = useState("");
   const [closed, setClosed] = useState(false);
   return (
     <Router>

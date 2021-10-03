@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import background from "../../assets/background.png";
 import styled, { css } from "styled-components";
+import MagnifyingGlass from "./Magnify";
+
+const ImageWrapper = styled.div`
+  position: relative;
+`;
 
 const StyledImage = styled.img`
   transition: all 1s;
@@ -19,14 +24,25 @@ const StyledImage = styled.img`
     `}
 `;
 const GameImage = ({ slide }) => {
+  const [cords, setCords] = useState("");
+
+  let getCords = (e) => {
+    let offSet = e.target.parentElement.parentElement;
+    setCords({
+      x: e.pageX - offSet.offsetLeft - 50,
+      y: e.pageY - offSet.offsetTop - 50,
+    });
+  };
+
   return (
-    <div>
+    <ImageWrapper onClick={getCords}>
       <StyledImage
         slide={slide}
         alt="Rick and Morty Themed Where's Waldo Styled"
         src={background}
       />
-    </div>
+      <MagnifyingGlass cords={cords} />
+    </ImageWrapper>
   );
 };
 
