@@ -3,7 +3,7 @@ import background from "../../assets/background.png";
 import styled, { css } from "styled-components";
 
 const Tagger = styled.div`
-  background: url(${background}) no-repeat #fff;
+  background: url(${background}) no-repeat;
   width: 100px;
   height: 100px;
   box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
@@ -16,6 +16,9 @@ const Tagger = styled.div`
   border-radius: 100%;
   display: block;
   transition: opacity 0.2s;
+  background-size: 150vw;
+  background-position-x: -100px;
+  background-position-y: -100px;
 `;
 
 const MagnifyingGlass = ({ cords }) => {
