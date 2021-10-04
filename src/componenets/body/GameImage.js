@@ -25,12 +25,11 @@ const StyledImage = styled.img`
 `;
 const GameImage = ({ slide }) => {
   const [cords, setCords] = useState("");
-
   let getCords = (e) => {
     let offSet = e.target.parentElement.parentElement;
     setCords({
-      x: e.pageX - offSet.offsetLeft - 50,
-      y: e.pageY - offSet.offsetTop - 50,
+      x: ((e.pageX - offSet.offsetLeft - 50) / e.target.width) * 100,
+      y: ((e.pageY - offSet.offsetTop - 50) / e.target.height) * 100,
     });
   };
 
