@@ -9,9 +9,9 @@ const Tagger = styled.div`
   box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
   pointer-events: none;
   position: absolute;
-  top: ${({ cords }) => `${cords.y}%`};
-  left: ${({ cords }) => `${cords.x}%`};
-  border: 4px dashed black;
+  top: calc(${({ cords }) => cords.y}% - 50px);
+  left: calc(${({ cords }) => cords.x}% - 50px);
+  /* border: 4px dashed black; */
   z-index: 99;
   border-radius: 100%;
   align-items: center;
