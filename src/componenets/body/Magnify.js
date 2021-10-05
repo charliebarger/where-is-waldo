@@ -4,14 +4,14 @@ import styled, { css } from "styled-components";
 
 const Tagger = styled.div`
   display: ${({ cords }) => (cords ? "flex" : "none")};
-  width: 100px;
-  height: 100px;
+  width: 10vw;
+  height: 10vw;
   box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
   pointer-events: none;
   position: absolute;
-  top: calc(${({ cords }) => cords.y}% - 50px);
-  left: calc(${({ cords }) => cords.x}% - 50px);
-  /* border: 4px dashed black; */
+  top: calc(${({ cords }) => cords.y}% - 5vw);
+  left: calc(${({ cords }) => cords.x}% - 5vw);
+  border: 4px dashed black;
   z-index: 99;
   border-radius: 100%;
   align-items: center;
@@ -32,8 +32,13 @@ const Tagger = styled.div`
   background-position-y: -100px; */
 `;
 
-const MagnifyingGlass = ({ cords }) => {
-  console.log(cords);
+const MagnifyingGlass = ({ cords, imageSize }) => {
+  const parasiteCoords = {
+    amishCyborg: { x: 2.7, y: 56.95 },
+    ghostInaJar: { x: 45, y: 53.5 },
+    reverseGiraffe: { x: 73, y: 73.95 },
+  };
+  console.log(imageSize);
   return <Tagger cords={cords} />;
 };
 
