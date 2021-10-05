@@ -23,20 +23,18 @@ const StyledImage = styled.img`
         default !important;
     `}
 `;
-const GameImage = ({ slide }) => {
+const GameImage = ({ slide, checkForHit }) => {
   const [cords, setCords] = useState("");
-  const [imageSize, setImageSize] = useState("");
+
   let getCords = (e) => {
     const imageSize = e.target.getBoundingClientRect();
     let offSet = e.target.parentElement.parentElement;
-
-    setImageSize({
-      imageHeight: imageSize.height,
-      imageWidth: imageSize.width,
-    });
+    const xCord = ((e.pageX - offSet.offsetLeft) / imageSize.width) * 100;
+    const yCord = ((e.pageY - offSet.offsetTop) / imageSize.height) * 100;
+    checkForHit({ x: xCord, y: yCord });
     setCords({
-      x: ((e.pageX - offSet.offsetLeft) / imageSize.width) * 100,
-      y: ((e.pageY - offSet.offsetTop) / imageSize.height) * 100,
+      x: xCord,
+      y: yCord,
     });
   };
 
@@ -48,7 +46,7 @@ const GameImage = ({ slide }) => {
         alt="Rick and Morty Themed Where's Waldo Styled"
         src={background}
       />
-      <MagnifyingGlass cords={cords} imageSize={imageSize} />
+      <MagnifyingGlass cords={cords} />
     </ImageWrapper>
   );
 };

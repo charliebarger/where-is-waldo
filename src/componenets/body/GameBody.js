@@ -18,7 +18,12 @@ const Body = styled.div`
 const GameBody = ({ slide, setSlide, setClosed }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
-
+  const [parasites, setParasites] = useState([
+    { x: 2.7, y: 56.95, name: "amishCyborg", found: false },
+    { x: 45, y: 53.5, name: "ghostInaJar", found: false },
+    { x: 73, y: 73.95, name: "reverseGiraffe", found: false },
+  ]);
+  console.log(parasites);
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
       setTurnPhoneAlert(true);
@@ -26,10 +31,39 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
       setTurnPhoneAlert(false);
     }
   };
+
   useEffect(() => {
     closePopUp(window.screen.width);
     window.addEventListener("resize", (e) => closePopUp(e.target.innerWidth));
   }, [Xclicked]);
+
+  const getArea = (cords) => {
+    return {
+      top: cords.y + 5,
+      bottom: cords.y - 5,
+      left: cords.x - 5,
+      right: cords.x + 5,
+    };
+  };
+
+  const getHitStatus = (cords, parasite) => {
+    return cords.y < parasite.top &&
+      cords.y > parasite.bottom &&
+      cords.x < parasite.right &&
+      cords.x > parasite.left
+      ? true
+      : false;
+  };
+
+  const findHitItem = (cords) => {
+    setParasites(
+      parasites.map((parasite) =>
+        getHitStatus(cords, getArea(parasite))
+          ? { ...parasite, found: true }
+          : parasite
+      )
+    );
+  };
 
   return (
     <Body onClick={() => setClosed(false)}>
@@ -37,7 +71,7 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
         <Route exact path="/">
           {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
           <SideCharacters slide={slide} />
-          <GameImage slide={slide} />
+          <GameImage slide={slide} checkForHit={findHitItem} />
           <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper>
         </Route>
         <Route path="/high-scores">
