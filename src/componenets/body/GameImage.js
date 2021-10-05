@@ -29,6 +29,7 @@ const GameImage = ({ slide }) => {
   let getCords = (e) => {
     const imageSize = e.target.getBoundingClientRect();
     let offSet = e.target.parentElement.parentElement;
+
     setImageSize({
       imageHeight: imageSize.height,
       imageWidth: imageSize.width,
@@ -40,8 +41,9 @@ const GameImage = ({ slide }) => {
   };
 
   return (
-    <ImageWrapper onClick={getCords}>
+    <ImageWrapper>
       <StyledImage
+        onClick={getCords}
         slide={slide}
         alt="Rick and Morty Themed Where's Waldo Styled"
         src={background}

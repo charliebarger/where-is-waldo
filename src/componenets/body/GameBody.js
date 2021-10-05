@@ -7,6 +7,7 @@ import TurnPhone from "./TurnPhone";
 import HighScores from "./HighScores";
 import { Switch, Route } from "react-router-dom";
 const Body = styled.div`
+  padding-bottom: 40px;
   overflow-x: hidden;
   width: 100%;
   min-height: calc(100vh - 100px);

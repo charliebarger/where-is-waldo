@@ -38,7 +38,27 @@ const MagnifyingGlass = ({ cords, imageSize }) => {
     ghostInaJar: { x: 45, y: 53.5 },
     reverseGiraffe: { x: 73, y: 73.95 },
   };
-  console.log(imageSize);
+
+  const getArea = (coords) => {
+    return {
+      top: coords.y + 5,
+      bottom: coords.y - 5,
+      left: coords.x - 5,
+      right: coords.x + 5,
+    };
+  };
+
+  let area = getArea(parasiteCoords.amishCyborg);
+  console.log(cords);
+  if (
+    cords.y < area.top &&
+    cords.y > area.bottom &&
+    cords.x < area.right &&
+    cords.x > area.left
+  ) {
+    alert("hit amish cyborg");
+  }
+  console.log(area);
   return <Tagger cords={cords} />;
 };
 
