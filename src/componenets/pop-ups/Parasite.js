@@ -55,7 +55,6 @@ const ImageLabel = styled.figcaption`
 `;
 
 const Parasites = ({ imgSource, parasiteName, header }) => {
-  console.log(imgSource, parasiteName);
   return (
     <ImageFigure>
       <ImageWrapper header={header}>
