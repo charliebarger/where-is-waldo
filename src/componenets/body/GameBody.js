@@ -15,30 +15,31 @@ const Body = styled.div`
   z-index: 0;
 `;
 
+const parasiteArray = [
+  {
+    name: "Amish Cyborg",
+    id: "amish",
+    found: false,
+    cords: { x: 2.7, y: 56.95 },
+  },
+  {
+    name: "Ghost In A Jar",
+    id: "ghost",
+    found: false,
+    cords: { x: 45, y: 53.5 },
+  },
+  {
+    name: "Reverse Giraffe",
+    id: "giraffe",
+    found: false,
+    cords: { x: 73, y: 73.95 },
+  },
+];
+
 const GameBody = ({ slide, setSlide, setClosed }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
-  const [parasites, setParasites] = useState([
-    {
-      name: "Amish Cyborg",
-      id: "amish",
-      found: false,
-      cords: { x: 2.7, y: 56.95 },
-    },
-    {
-      name: "Ghost In A Jar",
-      id: "ghost",
-      found: false,
-      cords: { x: 45, y: 53.5 },
-    },
-    {
-      name: "Reverse Giraffe",
-      id: "giraffe",
-      found: false,
-      cords: { x: 73, y: 73.95 },
-    },
-  ]);
-  console.log(parasites);
+  const [parasites, setParasites] = useState(parasiteArray);
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
       setTurnPhoneAlert(true);
@@ -47,10 +48,23 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
     }
   };
 
+  //closes turn phone pop up on screen resize
   useEffect(() => {
     closePopUp(window.screen.width);
     window.addEventListener("resize", (e) => closePopUp(e.target.innerWidth));
   }, [Xclicked]);
+
+  useEffect(() => {
+    if (slide === 1) {
+      setParasites(parasiteArray);
+    }
+  }, [slide]);
+
+  useEffect(() => {
+    if (parasites.every((parasite) => parasite.found)) {
+      setSlide(3);
+    }
+  }, [parasites, setSlide]);
 
   const getArea = (cords) => {
     return {
