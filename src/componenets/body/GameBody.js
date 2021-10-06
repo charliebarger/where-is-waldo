@@ -19,11 +19,26 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
   const [parasites, setParasites] = useState([
-    { x: 2.7, y: 56.95, name: "amishCyborg", found: false },
-    { x: 45, y: 53.5, name: "ghostInaJar", found: false },
-    { x: 73, y: 73.95, name: "reverseGiraffe", found: false },
+    {
+      name: "Amish Cyborg",
+      id: "amish",
+      found: false,
+      cords: { x: 2.7, y: 56.95 },
+    },
+    {
+      name: "Ghost In A Jar",
+      id: "ghost",
+      found: false,
+      cords: { x: 45, y: 53.5 },
+    },
+    {
+      name: "Reverse Giraffe",
+      id: "giraffe",
+      found: false,
+      cords: { x: 73, y: 73.95 },
+    },
   ]);
-  console.log("again");
+  console.log(parasites);
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
       setTurnPhoneAlert(true);
@@ -58,12 +73,13 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
   const findHitItem = (cords) => {
     if (
       parasites.some(
-        (parasite) => getHitStatus(cords, getArea(parasite)) && !parasite.found
+        (parasite) =>
+          getHitStatus(cords, getArea(parasite.cords)) && !parasite.found
       )
     ) {
       setParasites(
         parasites.map((parasite) =>
-          getHitStatus(cords, getArea(parasite))
+          getHitStatus(cords, getArea(parasite.cords))
             ? { ...parasite, found: true }
             : parasite
         )
@@ -76,7 +92,7 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
       <Switch>
         <Route exact path="/">
           {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
-          <SideCharacters slide={slide} />
+          <SideCharacters slide={slide} parasites={parasites} />
           <GameImage slide={slide} checkForHit={findHitItem} />
           <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper>
         </Route>

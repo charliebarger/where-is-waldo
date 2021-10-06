@@ -5,6 +5,7 @@ import ghostInAJar from "../../assets/parasites/ghostInAJar.png";
 import reverseGiraffeCloseUp from "../../assets/parasites/reverseGiraffeCloseUp.png";
 import Parasites from "../pop-ups/Parasite";
 import arrow from "../../assets/arrow.png";
+
 const Arrow = styled.div`
   cursor: ${({ slide }) => (slide ? "default" : "pointer")};
   /* position: absolute; */
@@ -50,12 +51,18 @@ const CharacterWrapper = styled.div`
     `}
 `;
 
-const SideCharacters = ({ slide }) => {
+const SideCharacters = ({ slide, parasites }) => {
   const [closed, setClosed] = useState(true);
 
   useEffect(() => {
     slide ? setClosed(true) : setClosed(false);
   }, [slide]);
+
+  const parasiteImages = {
+    giraffe: reverseGiraffeCloseUp,
+    amish: amishCyborgCloseUp,
+    ghost: ghostInAJar,
+  };
 
   return (
     <>
@@ -67,7 +74,17 @@ const SideCharacters = ({ slide }) => {
         <img alt="arrow" src={arrow} style={{ background: "none" }} />
       </Arrow>
       <CharacterWrapper closed={closed}>
-        <Parasites
+        {parasites.map((parasite) => {
+          return (
+            <Parasites
+              header
+              parasiteName={parasite.name}
+              imgSource={parasiteImages[parasite.id]}
+              found={parasite.found}
+            />
+          );
+        })}
+        {/* <Parasites
           header
           parasiteName="Amish Cyborg"
           imgSource={amishCyborgCloseUp}
@@ -81,7 +98,7 @@ const SideCharacters = ({ slide }) => {
           header
           parasiteName="Reverse Giraffe"
           imgSource={reverseGiraffeCloseUp}
-        />
+        /> */}
       </CharacterWrapper>
     </>
   );
