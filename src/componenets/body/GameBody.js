@@ -23,7 +23,7 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
     { x: 45, y: 53.5, name: "ghostInaJar", found: false },
     { x: 73, y: 73.95, name: "reverseGiraffe", found: false },
   ]);
-  console.log(parasites);
+  console.log("again");
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
       setTurnPhoneAlert(true);
@@ -56,13 +56,19 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
   };
 
   const findHitItem = (cords) => {
-    setParasites(
-      parasites.map((parasite) =>
-        getHitStatus(cords, getArea(parasite))
-          ? { ...parasite, found: true }
-          : parasite
+    if (
+      parasites.some(
+        (parasite) => getHitStatus(cords, getArea(parasite)) && !parasite.found
       )
-    );
+    ) {
+      setParasites(
+        parasites.map((parasite) =>
+          getHitStatus(cords, getArea(parasite))
+            ? { ...parasite, found: true }
+            : parasite
+        )
+      );
+    }
   };
 
   return (
