@@ -33,32 +33,6 @@ const Tagger = styled.div`
 `;
 
 const MagnifyingGlass = ({ cords, imageSize }) => {
-  const parasiteCoords = [
-    { x: 2.7, y: 56.95, name: "amishCyborg" },
-    { x: 45, y: 53.5, name: "ghostInaJar" },
-    { x: 73, y: 73.95, name: "reverseGiraffe" },
-  ];
-
-  // const getArea = (coords) => {
-  //   return {
-  //     top: coords.y + 5,
-  //     bottom: coords.y - 5,
-  //     left: coords.x - 5,
-  //     right: coords.x + 5,
-  //   };
-  // };
-
-  // let area = getArea(parasiteCoords.amishCyborg);
-  // console.log(cords);
-  // if (
-  //   cords.y < area.top &&
-  //   cords.y > area.bottom &&
-  //   cords.x < area.right &&
-  //   cords.x > area.left
-  // ) {
-  //   alert("hit amish cyborg");
-  // }
-  // console.log(area);
   return <Tagger cords={cords} />;
 };
 
