@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import background from "../../assets/background.png";
 import styled, { css } from "styled-components";
 import MagnifyingGlass from "./Magnify";
@@ -38,12 +38,20 @@ const GameImage = ({ slide, checkForHit }) => {
     });
   };
 
+  useEffect(() => {
+    if (slide) {
+      setShowMagnify(false);
+    }
+  }, [slide]);
+
   return (
     <ImageWrapper>
       <StyledImage
         onClick={(e) => {
           ///bug is here
-          getCords(e);
+          if (!showMagnify) {
+            getCords(e);
+          }
           setShowMagnify(!showMagnify);
         }}
         slide={slide}
