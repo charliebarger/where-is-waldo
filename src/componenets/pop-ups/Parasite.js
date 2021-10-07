@@ -8,21 +8,40 @@ const ImageFigure = styled.figure`
 
 const Overlay = styled.div`
   position: absolute;
-  z-index: 101;
+  z-index: 1;
   width: calc(100% - 10px);
   height: calc(100% - 10px);
   border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #80808070;
   &:before {
-    transform: rotate(-25deg);
     display: block;
-    content: "Found";
-    color: red;
-    font-size: 24px;
   }
+  ${({ found }) =>
+    found
+      ? css`
+          background: #80808070;
+          &:before {
+            transform: rotate(-25deg);
+            color: red;
+            font-size: 24px;
+            content: "Found";
+          }
+        `
+      : css`
+          &:hover,
+          &:active {
+            background: #3c3c3cdb;
+            &:before {
+              color: ${({ theme }) => theme.colors.green};
+              font-size: 18px;
+              content: "${({ parasiteName }) => parasiteName}";
+              text-align: center;
+              padding: 5px;
+            }
+          }
+        `}
 `;
 
 const ImageWrapper = styled.div`
@@ -45,7 +64,7 @@ const ImageWrapper = styled.div`
       padding: 15px;
     `}
 
-  &:hover {
+  &:hover, &:active {
     transform: scale(1.1);
     animation: shakeIt 2s;
     animation-iteration-count: infinite;
@@ -84,7 +103,7 @@ const Parasites = ({ imgSource, parasiteName, header, found }) => {
     <ImageFigure>
       <ImageWrapper header={header} found={found}>
         <img alt={parasiteName} src={imgSource}></img>
-        {found && <Overlay found={found} />}
+        <Overlay found={found} parasiteName={parasiteName} />
       </ImageWrapper>
       {!header && <ImageLabel>{parasiteName}</ImageLabel>}
     </ImageFigure>
