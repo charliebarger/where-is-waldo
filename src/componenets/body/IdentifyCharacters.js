@@ -90,6 +90,15 @@ const SelectParasite = styled.span`
   &:hover {
     transform: scale(1.1);
   }
+  ${({ found }) =>
+    found &&
+    css`
+      border: red solid 2px;
+      text-decoration: line-through;
+      &:hover {
+        transform: scale(1);
+      }
+    `}
 `;
 
 const IdentifyCharacters = ({ cords, parasites, checkForHit }) => {
@@ -97,7 +106,12 @@ const IdentifyCharacters = ({ cords, parasites, checkForHit }) => {
   return (
     <NameWrapper cords={cords}>
       {parasites.map((parasite) => (
-        <SelectParasite onClick={() => checkForHit(cords, parasite.id)}>
+        <SelectParasite
+          found={parasite.found}
+          onClick={
+            !parasite.found ? () => checkForHit(cords, parasite.id) : undefined
+          }
+        >
           {parasite.name}
         </SelectParasite>
       ))}
