@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import GameImage from "./GameImage";
 import styled from "styled-components";
 import PopUpWrapper from "../pop-ups/PopUpWindow";
+import amishCyborgCloseUp from "../../assets/parasites/amishCyborgCloseUp.png";
+import ghostInAJar from "../../assets/parasites/ghostInAJar.png";
+import reverseGiraffeCloseUp from "../../assets/parasites/reverseGiraffeCloseUp.png";
 import SideCharacters from "./SideCharacters";
+import amishCyborg from "../../assets/parasites/amishCyborg.png";
+import reverseGiraffe from "../../assets/parasites/reverseGiraffe.png";
 import TurnPhone from "./TurnPhone";
 import HighScores from "./HighScores";
 import { Switch, Route } from "react-router-dom";
@@ -21,18 +26,24 @@ const parasiteArray = [
     id: "amish",
     found: false,
     cords: { x: 2.7, y: 56.95 },
+    closeUp: amishCyborgCloseUp,
+    fullBody: amishCyborg,
   },
   {
     name: "Ghost In A Jar",
     id: "ghost",
     found: false,
     cords: { x: 45, y: 53.5 },
+    closeUp: ghostInAJar,
+    fullBody: ghostInAJar,
   },
   {
     name: "Reverse Giraffe",
     id: "giraffe",
     found: false,
     cords: { x: 73, y: 73.95 },
+    closeUp: reverseGiraffeCloseUp,
+    fullBody: reverseGiraffe,
   },
 ];
 
@@ -84,11 +95,14 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
       : false;
   };
 
-  const findHitItem = (cords) => {
+  const findHitItem = (cords, selectedParasite) => {
+    console.log(cords, selectedParasite);
     if (
       parasites.some(
         (parasite) =>
-          getHitStatus(cords, getArea(parasite.cords)) && !parasite.found
+          parasite.id === selectedParasite &&
+          getHitStatus(cords, getArea(parasite.cords)) &&
+          !parasite.found
       )
     ) {
       setParasites(

@@ -92,12 +92,14 @@ const SelectParasite = styled.span`
   }
 `;
 
-const IdentifyCharacters = ({ cords, parasites }) => {
-  console.log(parasites);
+const IdentifyCharacters = ({ cords, parasites, checkForHit }) => {
+  console.log(checkForHit);
   return (
     <NameWrapper cords={cords}>
       {parasites.map((parasite) => (
-        <SelectParasite>{parasite.name}</SelectParasite>
+        <SelectParasite onClick={() => checkForHit(cords, parasite.id)}>
+          {parasite.name}
+        </SelectParasite>
       ))}
     </NameWrapper>
   );

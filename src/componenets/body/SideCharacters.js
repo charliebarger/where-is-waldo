@@ -58,12 +58,6 @@ const SideCharacters = ({ slide, parasites }) => {
     slide ? setClosed(true) : setClosed(false);
   }, [slide]);
 
-  const parasiteImages = {
-    giraffe: reverseGiraffeCloseUp,
-    amish: amishCyborgCloseUp,
-    ghost: ghostInAJar,
-  };
-
   return (
     <>
       <Arrow
@@ -79,7 +73,7 @@ const SideCharacters = ({ slide, parasites }) => {
             <Parasites
               header
               parasiteName={parasite.name}
-              imgSource={parasiteImages[parasite.id]}
+              imgSource={parasite["closeUp"]}
               found={parasite.found}
             />
           );

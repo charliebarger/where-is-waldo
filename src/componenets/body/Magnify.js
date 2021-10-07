@@ -28,11 +28,15 @@ const Tagger = styled.div`
   }
 `;
 
-const MagnifyingGlass = ({ cords, parasites }) => {
+const MagnifyingGlass = ({ cords, parasites, checkForHit }) => {
   return (
     <>
       <Tagger cords={cords} />
-      <IdentifyCharacters cords={cords} parasites={parasites} />
+      <IdentifyCharacters
+        cords={cords}
+        parasites={parasites}
+        checkForHit={checkForHit}
+      />
     </>
   );
 };
