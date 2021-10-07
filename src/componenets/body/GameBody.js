@@ -107,7 +107,11 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
         <Route exact path="/">
           {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
           <SideCharacters slide={slide} parasites={parasites} />
-          <GameImage slide={slide} checkForHit={findHitItem} />
+          <GameImage
+            slide={slide}
+            checkForHit={findHitItem}
+            parasites={parasites}
+          />
           <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper>
         </Route>
         <Route path="/high-scores">
