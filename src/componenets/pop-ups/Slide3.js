@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import StyledPopUp from "./Slides";
 import rick1 from "../../assets/rick1.png";
@@ -53,6 +53,8 @@ const NameSectionSpan = styled.span`
 `;
 const Slide3 = ({ changeSlide }) => {
   const formId = "usernameForm";
+  const [validity, setValidity] = useState(false);
+  console.log(validity);
   return (
     <StyledPopUp place={3}>
       <ImageWrapper>
@@ -66,13 +68,19 @@ const Slide3 = ({ changeSlide }) => {
         <NameSectionSpan>
           Let's Get You on the Global Leaderboard!
         </NameSectionSpan>
-        <InputWrapper>
+        <InputWrapper required>
           <NameSectionSpan>What's your name Bruh?</NameSectionSpan>
-          <SetUsername formId={formId} />
+          <SetUsername setValidity={setValidity} formId={formId} />
         </InputWrapper>
       </NameSection>
       <ButtonPosition>
-        <Button type="submit" form={formId} className="submit">
+        <Button
+          type="submit"
+          form={formId}
+          linkTo="/high-scores"
+          className="submit"
+          valid={validity}
+        >
           Submit
         </Button>
       </ButtonPosition>

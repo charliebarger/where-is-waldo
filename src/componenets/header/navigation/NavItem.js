@@ -41,7 +41,7 @@ const NavItem = ({ children, side, mobile, linkPath, setClosed }) => {
   return (
     <StyledNavItem
       onClick={setClosed ? () => setClosed(false) : null}
-      to={`${linkPath}`}
+      to={linkPath}
       exact
       activeClassName="active"
       mobile={mobile}

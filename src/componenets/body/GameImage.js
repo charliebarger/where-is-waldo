@@ -46,7 +46,7 @@ const GameImage = ({ slide, checkForHit }) => {
         alt="Rick and Morty Themed Where's Waldo Styled"
         src={background}
       />
-      <MagnifyingGlass cords={cords} />
+      {!slide && <MagnifyingGlass cords={cords} />}
     </ImageWrapper>
   );
 };

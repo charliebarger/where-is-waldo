@@ -18,7 +18,7 @@ const NameInput = styled.input`
   color: white;
 `;
 
-const SetUsername = ({ formId }) => {
+const SetUsername = ({ formId, setValidity }) => {
   const [formValue, setFormValue] = useState("");
 
   const submitForm = (e) => {
@@ -30,8 +30,12 @@ const SetUsername = ({ formId }) => {
     <form onSubmit={submitForm} id={formId}>
       <NameInput
         value={formValue}
-        onChange={(e) => setFormValue(e.target.value)}
+        onChange={(e) => {
+          setFormValue(e.target.value);
+          setValidity(e.target.validity.valid);
+        }}
         placeholder="Username"
+        required
       />
     </form>
   );
