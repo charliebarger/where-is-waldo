@@ -11,6 +11,10 @@ import reverseGiraffe from "../../assets/parasites/reverseGiraffe.png";
 import TurnPhone from "./TurnPhone";
 import HighScores from "./HighScores";
 import { Switch, Route } from "react-router-dom";
+import WrongSelection from "./WrongSelection";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Body = styled.div`
   padding-bottom: 40px;
   overflow-x: hidden;
@@ -52,6 +56,7 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
   const [Xclicked, setXclicked] = useState(false);
   const [parasites, setParasites] = useState(parasiteArray);
   const [showMagnify, setShowMagnify] = useState(false);
+  const [wrongAnswer, setWrongAnswer] = useState(false);
   console.log(showMagnify);
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
@@ -116,12 +121,13 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
         )
       );
     } else {
-      // alert("wrong");
+      setWrongAnswer(true);
     }
   };
 
   return (
     <Body onClick={() => setClosed(false)}>
+      {wrongAnswer && <WrongSelection setWrongAnswer={setWrongAnswer} />}
       <Switch>
         <Route exact path="/">
           {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}

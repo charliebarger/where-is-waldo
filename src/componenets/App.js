@@ -7,9 +7,18 @@ import GameBody from "./body/GameBody";
 import { HashRouter as Router } from "react-router-dom";
 import db from "./firebase.config";
 
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, query, getDocs } from "firebase/firestore";
 
 function App() {
+  const getParasites = async () => {
+    let parasites = [];
+    const querySnapshot = await getDocs(collection(db, "parasites"));
+    querySnapshot.forEach((doc) => {
+      parasites.push(doc.data());
+    });
+    console.log(parasites);
+  };
+  getParasites();
   const [slide, setSlide] = useState(1);
   const [closed, setClosed] = useState(false);
   return (
