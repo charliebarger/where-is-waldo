@@ -103,7 +103,7 @@ const Parasites = ({ imgSource, parasiteName, header, found }) => {
     <ImageFigure>
       <ImageWrapper header={header} found={found}>
         <img alt={parasiteName} src={imgSource}></img>
-        <Overlay found={found} parasiteName={parasiteName} />
+        {header && <Overlay found={found} parasiteName={parasiteName} />}
       </ImageWrapper>
       {!header && <ImageLabel>{parasiteName}</ImageLabel>}
     </ImageFigure>
