@@ -23,10 +23,14 @@ const StyledImage = styled.img`
         default !important;
     `}
 `;
-const GameImage = ({ slide, checkForHit, parasites }) => {
-  console.log(checkForHit);
+const GameImage = ({
+  slide,
+  checkForHit,
+  parasites,
+  showMagnify,
+  setShowMagnify,
+}) => {
   const [cords, setCords] = useState("");
-  const [showMagnify, setShowMagnify] = useState(false);
   let getCords = (e) => {
     const imageSize = e.target.getBoundingClientRect();
     let offSet = e.target.parentElement.parentElement;

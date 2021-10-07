@@ -51,6 +51,8 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
   const [parasites, setParasites] = useState(parasiteArray);
+  const [showMagnify, setShowMagnify] = useState(false);
+  console.log(showMagnify);
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
       setTurnPhoneAlert(true);
@@ -105,6 +107,7 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
           !parasite.found
       )
     ) {
+      setShowMagnify(false);
       setParasites(
         parasites.map((parasite) =>
           getHitStatus(cords, getArea(parasite.cords))
@@ -112,6 +115,8 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
             : parasite
         )
       );
+    } else {
+      // alert("wrong");
     }
   };
 
@@ -122,6 +127,8 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
           {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
           <SideCharacters slide={slide} parasites={parasites} />
           <GameImage
+            showMagnify={showMagnify}
+            setShowMagnify={setShowMagnify}
             slide={slide}
             checkForHit={findHitItem}
             parasites={parasites}
