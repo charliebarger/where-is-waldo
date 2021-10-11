@@ -13,6 +13,7 @@ import HighScores from "./HighScores";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import emojiRick from "../../assets/rickEmoji.png";
 
 const Body = styled.div`
   padding-bottom: 40px;
@@ -23,6 +24,22 @@ const Body = styled.div`
   z-index: 0;
 `;
 
+const WrongAlert = styled(ToastContainer)`
+  position: absolute;
+  top: 10px;
+  * {
+    color: red;
+  }
+  .Toastify__progress-bar {
+    background: red;
+  }
+  @media ${({ theme }) => theme.mediaQueries.below700} {
+    width: 250px;
+  }
+  @media ${({ theme }) => theme.mediaQueries.below550} {
+    width: 200px;
+  }
+`;
 const parasiteArray = [
   {
     name: "Amish Cyborg",
@@ -119,7 +136,15 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
         )
       );
     } else {
-      toast("Will close after 3s", { autoClose: 3000 });
+      toast("Thats Wrong Bruh", {
+        position: "top-left",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
     }
   };
 
@@ -142,7 +167,7 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
           <HighScores setSlide={setSlide}></HighScores>
         </Route>
       </Switch>
-      <ToastContainer />
+      <WrongAlert icon={<img alt="emoji of rick" src={emojiRick} />} />
     </Body>
   );
 };
