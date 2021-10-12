@@ -58,6 +58,7 @@ const GameBody = ({
   const [Xclicked, setXclicked] = useState(false);
   const [showMagnify, setShowMagnify] = useState(false);
 
+  console.log(username);
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
       setTurnPhoneAlert(true);
@@ -144,7 +145,12 @@ const GameBody = ({
             ></PopUpWrapper>
           </Route>
           <Route path="/high-scores">
-            <HighScores setSlide={setSlide}></HighScores>
+            <HighScores
+              setSlide={setSlide}
+              username={username}
+              setUsername={setUsername}
+              addUsername={addUsername}
+            ></HighScores>
           </Route>
         </Switch>
       )}

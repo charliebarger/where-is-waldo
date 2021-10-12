@@ -12,7 +12,7 @@ import {
   doc,
   query,
   getDocs,
-  addDoc,
+  Doc,
 } from "firebase/firestore";
 import db from "./firebase.config";
 
@@ -22,17 +22,16 @@ function App() {
   const [parasites, setParasites] = useState();
   const [username, setUsername] = useState("");
   console.log(username);
+
   const addUsername = async (userName) => {
-    try {
-      await addDoc(collection(db, "players", "hi"));
-    } catch (e) {
-      console.error("Error adding username", e);
-    }
+    await setDoc(doc(db, "players", username), {
+      time: 0,
+    });
   };
 
   useEffect(() => {
     if (parasites && parasites.every((parasite) => parasite.found)) {
-      setSlide(1);
+      setSlide(3);
     }
   }, [parasites, setSlide]);
 
