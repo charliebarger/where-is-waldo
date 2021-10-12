@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
+import getParasites from "../../assets/helpers/retrieveData";
 import GameImage from "./GameImage";
 import styled from "styled-components";
 import PopUpWrapper from "../pop-ups/PopUpWindow";
-import amishCyborgCloseUp from "../../assets/parasites/amishCyborgCloseUp.png";
-import ghostInAJar from "../../assets/parasites/ghostInAJar.png";
-import reverseGiraffeCloseUp from "../../assets/parasites/reverseGiraffeCloseUp.png";
+// import amishCyborgCloseUp from "../../assets/parasites/amishCyborgCloseUp.png";
+// import ghostInAJar from "../../assets/parasites/ghostInAJar.png";
+// import reverseGiraffeCloseUp from "../../assets/parasites/reverseGiraffeCloseUp.png";
 import SideCharacters from "./SideCharacters";
-import amishCyborg from "../../assets/parasites/amishCyborg.png";
-import reverseGiraffe from "../../assets/parasites/reverseGiraffe.png";
+// import amishCyborg from "../../assets/parasites/amishCyborg.png";
+// import reverseGiraffe from "../../assets/parasites/reverseGiraffe.png";
 import TurnPhone from "./TurnPhone";
 import HighScores from "./HighScores";
 import { Switch, Route } from "react-router-dom";
@@ -40,39 +41,23 @@ const WrongAlert = styled(ToastContainer)`
     width: 200px;
   }
 `;
-const parasiteArray = [
-  {
-    name: "Amish Cyborg",
-    id: "amish",
-    found: false,
-    cords: { x: 2.7, y: 56.95 },
-    closeUp: amishCyborgCloseUp,
-    fullBody: amishCyborg,
-  },
-  {
-    name: "Ghost In A Jar",
-    id: "ghost",
-    found: false,
-    cords: { x: 45, y: 53.5 },
-    closeUp: ghostInAJar,
-    fullBody: ghostInAJar,
-  },
-  {
-    name: "Reverse Giraffe",
-    id: "giraffe",
-    found: false,
-    cords: { x: 73, y: 73.95 },
-    closeUp: reverseGiraffeCloseUp,
-    fullBody: reverseGiraffe,
-  },
-];
 
-const GameBody = ({ slide, setSlide, setClosed }) => {
+// const ImageMatch =
+
+const GameBody = ({
+  slide,
+  setSlide,
+  setClosed,
+  parasites,
+  setParasites,
+  username,
+  setUsername,
+  addUsername,
+}) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
-  const [parasites, setParasites] = useState(parasiteArray);
   const [showMagnify, setShowMagnify] = useState(false);
-  console.log(showMagnify);
+
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
       setTurnPhoneAlert(true);
@@ -86,18 +71,6 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
     closePopUp(window.screen.width);
     window.addEventListener("resize", (e) => closePopUp(e.target.innerWidth));
   }, [Xclicked]);
-
-  useEffect(() => {
-    if (slide === 1) {
-      setParasites(parasiteArray);
-    }
-  }, [slide]);
-
-  useEffect(() => {
-    if (parasites.every((parasite) => parasite.found)) {
-      setSlide(3);
-    }
-  }, [parasites, setSlide]);
 
   const getArea = (cords) => {
     return {
@@ -150,23 +123,31 @@ const GameBody = ({ slide, setSlide, setClosed }) => {
 
   return (
     <Body onClick={() => setClosed(false)}>
-      <Switch>
-        <Route exact path="/">
-          {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
-          <SideCharacters slide={slide} parasites={parasites} />
-          <GameImage
-            showMagnify={showMagnify}
-            setShowMagnify={setShowMagnify}
-            slide={slide}
-            checkForHit={findHitItem}
-            parasites={parasites}
-          />
-          <PopUpWrapper slide={slide} setSlide={setSlide}></PopUpWrapper>
-        </Route>
-        <Route path="/high-scores">
-          <HighScores setSlide={setSlide}></HighScores>
-        </Route>
-      </Switch>
+      {parasites && (
+        <Switch>
+          <Route exact path="/">
+            {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
+            <SideCharacters slide={slide} parasites={parasites} />
+            <GameImage
+              showMagnify={showMagnify}
+              setShowMagnify={setShowMagnify}
+              slide={slide}
+              checkForHit={findHitItem}
+              parasites={parasites}
+            />
+            <PopUpWrapper
+              slide={slide}
+              setSlide={setSlide}
+              username={username}
+              setUsername={setUsername}
+              addUsername={addUsername}
+            ></PopUpWrapper>
+          </Route>
+          <Route path="/high-scores">
+            <HighScores setSlide={setSlide}></HighScores>
+          </Route>
+        </Switch>
+      )}
       <WrongAlert icon={<img alt="emoji of rick" src={emojiRick} />} />
     </Body>
   );

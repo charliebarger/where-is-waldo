@@ -18,23 +18,25 @@ const NameInput = styled.input`
   color: white;
 `;
 
-const SetUsername = ({ formId, setValidity }) => {
-  const [formValue, setFormValue] = useState("");
-
+const SetUsername = ({ formId, setValidity, formValue, setFormValue }) => {
   const submitForm = (e) => {
     e.preventDefault();
+    console.log("here");
     setFormValue("");
   };
 
   const updateForm = (word) => {
-    const filter = new Filter({ placeHolder: "No Naught Words" });
+    const filter = new Filter({
+      placeHolder: "No Naught Words",
+      regex: /\*|\.|$/gi,
+    });
     filter.isProfane(word)
       ? setFormValue("No Naughty Words")
       : setFormValue(word);
   };
 
   return (
-    <form onSubmit={submitForm} id={formId}>
+    <form id={formId}>
       <NameInput
         value={formValue}
         onChange={(e) => {

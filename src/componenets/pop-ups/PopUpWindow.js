@@ -53,7 +53,13 @@ const Slides = styled.div`
       transform: translateX(calc(-50% - 10px));
     `}
 `;
-const PopUpWrapper = ({ slide, setSlide }) => {
+const PopUpWrapper = ({
+  slide,
+  setSlide,
+  username,
+  setUsername,
+  addUsername,
+}) => {
   console.log("rerender");
   return (
     <TryIT slide={slide}>
@@ -65,7 +71,11 @@ const PopUpWrapper = ({ slide, setSlide }) => {
               <FindParasites changeSlide={() => setSlide("")}></FindParasites>
             </>
           ) : (
-            <Slide3>Yooo</Slide3>
+            <Slide3
+              username={username}
+              setUsername={setUsername}
+              addUsername={addUsername}
+            />
           )}
         </Slides>
       </Wrapper>

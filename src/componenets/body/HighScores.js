@@ -66,11 +66,14 @@ const UserNames = styled.div`
   }
 `;
 
-const HighScores = ({ setSlide }) => {
+const HighScores = ({ setSlide, username, setUsername, addUsername }) => {
   useEffect(() => {
     setSlide(1);
   }, []);
 
+  useEffect(() => {
+    alert(username);
+  }, []);
   const winners = [
     { name: "Rick", time: "00:10:01" },
     { name: "Morty", time: "00:10:01" },

@@ -51,10 +51,10 @@ const NameSectionSpan = styled.span`
   display: block;
   margin-bottom: 10px;
 `;
-const Slide3 = ({ changeSlide }) => {
+const Slide3 = ({ changeSlide, username, setUsername, addUsername }) => {
   const formId = "usernameForm";
   const [validity, setValidity] = useState(false);
-  console.log(validity);
+
   return (
     <StyledPopUp place={3}>
       <ImageWrapper>
@@ -70,7 +70,12 @@ const Slide3 = ({ changeSlide }) => {
         </NameSectionSpan>
         <InputWrapper required>
           <NameSectionSpan>What's your name Bruh?</NameSectionSpan>
-          <SetUsername setValidity={setValidity} formId={formId} />
+          <SetUsername
+            setValidity={setValidity}
+            formId={formId}
+            formValue={username}
+            setFormValue={setUsername}
+          />
         </InputWrapper>
       </NameSection>
       <ButtonPosition>
