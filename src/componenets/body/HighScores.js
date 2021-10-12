@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { collection, setDoc, doc, query, getDocs } from "firebase/firestore";
 import db from "../../componenets/firebase.config";
@@ -75,29 +75,20 @@ const HighScores = ({
   setUsername,
   addUsername,
 }) => {
-  console.log(username);
+  const [winners, setWinners] = useState("");
+  const getLeaders = async () => {
+    //get leaders info
+    const querySnapshot = await getDocs(collection(db, "players"));
+    setWinners(querySnapshot.docs);
+  };
+
   useEffect(() => {
     if (slide === 3) {
       addUsername(username);
     }
     setSlide(1);
-    const getParasites = async () => {
-      //get parasite info
-      const querySnapshot = await getDocs(collection(db, "parasites"));
-    };
+    getLeaders();
   }, [slide, addUsername, setSlide, username]);
-  const winners = [
-    { name: "Rick", time: "00:10:01" },
-    { name: "Morty", time: "00:10:01" },
-    { name: "Rick", time: "00:10:01" },
-    { name: "Rick", time: "00:10:01" },
-    { name: "Rick", time: "00:10:01" },
-    { name: "Rick", time: "00:10:01" },
-    { name: "Rick", time: "00:10:01" },
-    { name: "Rick", time: "00:10:01" },
-    { name: "Rick", time: "00:10:01" },
-    { name: "Rick", time: "00:10:01" },
-  ];
   return (
     <div>
       <ScoreHeader>High Scores</ScoreHeader>
@@ -106,15 +97,17 @@ const HighScores = ({
           <GridHeader place>Place</GridHeader>
           <GridHeader>Name</GridHeader>
           <GridHeader>Time</GridHeader>
-          {winners.map((winner, index) => {
-            return (
-              <>
-                <Numbers>{index + 1}</Numbers>
-                <UserNames>{winner.name}</UserNames>
-                <Numbers>{winner.time}</Numbers>
-              </>
-            );
-          })}
+          {winners &&
+            winners.map((winner, index) => {
+              winner = winner.data();
+              return (
+                <>
+                  <Numbers>{index + 1}</Numbers>
+                  <UserNames>{winner.username}</UserNames>
+                  <Numbers>{winner.time}</Numbers>
+                </>
+              );
+            })}
         </ScoreBoard>
       </ScoreBoardWrapper>
     </div>
