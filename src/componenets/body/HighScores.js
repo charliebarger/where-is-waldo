@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
+import { collection, setDoc, doc, query, getDocs } from "firebase/firestore";
+import db from "../../componenets/firebase.config";
 
 const ScoreBoardWrapper = styled.div`
   border: ${({ theme }) => theme.colors.blue} 2px solid;
@@ -66,12 +68,24 @@ const UserNames = styled.div`
   }
 `;
 
-const HighScores = ({ setSlide, username, setUsername, addUsername }) => {
+const HighScores = ({
+  slide,
+  setSlide,
+  username,
+  setUsername,
+  addUsername,
+}) => {
   console.log(username);
   useEffect(() => {
+    if (slide === 3) {
+      addUsername(username);
+    }
     setSlide(1);
-    addUsername(username);
-  }, []);
+    const getParasites = async () => {
+      //get parasite info
+      const querySnapshot = await getDocs(collection(db, "parasites"));
+    };
+  }, [slide, addUsername, setSlide, username]);
   const winners = [
     { name: "Rick", time: "00:10:01" },
     { name: "Morty", time: "00:10:01" },

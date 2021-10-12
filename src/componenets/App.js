@@ -8,7 +8,7 @@ import { HashRouter as Router } from "react-router-dom";
 import getParasites from "../assets/helpers/retrieveData";
 import {
   collection,
-  setDoc,
+  addDoc,
   doc,
   query,
   getDocs,
@@ -24,7 +24,8 @@ function App() {
   console.log(username);
 
   const addUsername = async (userName) => {
-    await setDoc(doc(db, "players", username), {
+    await addDoc(collection(db, "players"), {
+      username: userName,
       time: 0,
     });
   };
@@ -36,8 +37,9 @@ function App() {
   }, [parasites, setSlide]);
 
   useEffect(() => {
-    if (slide) {
+    if (slide === 1) {
       getParasites().then((result) => setParasites(result));
+      setUsername("");
     }
   }, [slide]);
   return (

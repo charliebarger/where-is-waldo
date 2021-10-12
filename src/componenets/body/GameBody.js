@@ -146,6 +146,7 @@ const GameBody = ({
           </Route>
           <Route path="/high-scores">
             <HighScores
+              slide={slide}
               setSlide={setSlide}
               username={username}
               setUsername={setUsername}
