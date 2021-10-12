@@ -19,7 +19,7 @@ function App() {
     console.log(parasites);
   };
   getParasites();
-  const [slide, setSlide] = useState(1);
+  const [slide, setSlide] = useState(3);
   const [closed, setClosed] = useState(false);
   return (
     <Router>

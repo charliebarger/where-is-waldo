@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+const Filter = require("bad-words");
 const NameInput = styled.input`
   outline: none;
   display: flex;
@@ -26,12 +26,19 @@ const SetUsername = ({ formId, setValidity }) => {
     setFormValue("");
   };
 
+  const updateForm = (word) => {
+    const filter = new Filter({ placeHolder: "No Naught Words" });
+    filter.isProfane(word)
+      ? setFormValue("No Naughty Words")
+      : setFormValue(word);
+  };
+
   return (
     <form onSubmit={submitForm} id={formId}>
       <NameInput
         value={formValue}
         onChange={(e) => {
-          setFormValue(e.target.value);
+          updateForm(e.target.value);
           setValidity(e.target.validity.valid);
         }}
         placeholder="Username"
