@@ -32,13 +32,25 @@ function App() {
     await setDoc(doc(db, "players", id), {});
   };
   const addUsername = async (userName) => {
-    alert(id);
     const field = await doc(db, "players", id);
     await updateDoc(field, {
       username: userName,
     });
   };
 
+  const addStartTime = async () => {
+    const field = await doc(db, "players", id);
+    await updateDoc(field, {
+      startTime: Timestamp.now(),
+    });
+  };
+
+  const addEndTime = async () => {
+    const field = await doc(db, "players", id);
+    await updateDoc(field, {
+      endTime: Timestamp.now(),
+    });
+  };
   useEffect(() => {
     if (parasites && parasites.every((parasite) => parasite.found)) {
       setSlide(3);
@@ -51,6 +63,12 @@ function App() {
       setId(uniqid());
       setUsername("");
     }
+    if (!slide) {
+      addStartTime();
+    }
+    if (slide === 3) {
+      addEndTime();
+    }
   }, [slide]);
 
   useEffect(() => {
@@ -62,6 +80,7 @@ function App() {
         <GolbalStyles />
         <Header slide={slide} closed={closed} setClosed={setClosed} />
         <GameBody
+          id={id}
           slide={slide}
           setSlide={setSlide}
           setClosed={setClosed}

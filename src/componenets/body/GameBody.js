@@ -51,6 +51,7 @@ const GameBody = ({
   parasites,
   setParasites,
   username,
+  id,
   setUsername,
   addUsername,
 }) => {
