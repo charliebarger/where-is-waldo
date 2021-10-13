@@ -51,10 +51,7 @@ const GameBody = ({
   parasites,
   setParasites,
   username,
-  id,
   setUsername,
-  addUsername,
-  setFinished,
 }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
@@ -132,7 +129,6 @@ const GameBody = ({
             {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
             <SideCharacters slide={slide} parasites={parasites} />
             <GameImage
-              id={id}
               setSlide={setSlide}
               showMagnify={showMagnify}
               setShowMagnify={setShowMagnify}
@@ -141,12 +137,10 @@ const GameBody = ({
               parasites={parasites}
             />
             <PopUpWrapper
-              setFinished={setFinished}
               slide={slide}
               setSlide={setSlide}
               username={username}
               setUsername={setUsername}
-              addUsername={addUsername}
             ></PopUpWrapper>
           </Route>
           <Route path="/high-scores">
@@ -155,7 +149,6 @@ const GameBody = ({
               setSlide={setSlide}
               username={username}
               setUsername={setUsername}
-              addUsername={addUsername}
             ></HighScores>
           </Route>
         </Switch>

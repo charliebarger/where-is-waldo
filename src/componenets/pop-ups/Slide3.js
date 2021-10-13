@@ -51,14 +51,7 @@ const NameSectionSpan = styled.span`
   display: block;
   margin-bottom: 10px;
 `;
-const Slide3 = ({
-  changeSlide,
-  username,
-  setUsername,
-  addUsername,
-  setFinished,
-  setSlide,
-}) => {
+const Slide3 = ({ username, setUsername, setSlide }) => {
   const formId = "usernameForm";
   const [validity, setValidity] = useState(false);
 
@@ -82,7 +75,6 @@ const Slide3 = ({
             formId={formId}
             formValue={username}
             setFormValue={setUsername}
-            setFinished={setFinished}
           />
         </InputWrapper>
       </NameSection>

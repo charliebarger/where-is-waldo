@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import {
-  collection,
-  setDoc,
-  doc,
-  getDocs,
-  limit,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, limit, query } from "firebase/firestore";
 import db from "../../componenets/firebase.config";
+
+//Start Styles
 
 const ScoreBoardWrapper = styled.div`
   border: ${({ theme }) => theme.colors.blue} 2px solid;
@@ -76,36 +70,23 @@ const UserNames = styled.div`
   }
 `;
 
-const HighScores = ({
-  slide,
-  setSlide,
-  username,
-  setUsername,
-  addUsername,
-}) => {
+//End Styles
+
+const HighScores = () => {
   const [winners, setWinners] = useState("");
+
+  //get top 10 player on the leaderbaord
   const getLeaders = async () => {
-    //get leaders info
     const playerRef = collection(db, "players");
-    const highScores = await query(
-      playerRef,
-      limit(10),
-      where("username", "!=", false)
-    );
+    const highScores = await query(playerRef, limit(10));
     const querySnapshot = await getDocs(highScores);
     setWinners(querySnapshot.docs);
   };
 
-  const updateGame = async () => {
-    if (slide === 3) {
-      await addUsername(username);
-    }
-    await getLeaders();
-  };
-
   useEffect(() => {
-    updateGame();
-  }, [slide, addUsername, setSlide, username]);
+    getLeaders();
+  }, []);
+
   return (
     <div>
       <ScoreHeader>High Scores</ScoreHeader>

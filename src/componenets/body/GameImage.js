@@ -29,7 +29,6 @@ const GameImage = ({
   parasites,
   showMagnify,
   setShowMagnify,
-  id,
   setSlide,
 }) => {
   const [cords, setCords] = useState("");

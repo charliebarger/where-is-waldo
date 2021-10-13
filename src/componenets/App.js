@@ -6,32 +6,25 @@ import { ThemeProvider } from "styled-components";
 import GameBody from "./body/GameBody";
 import { HashRouter as Router } from "react-router-dom";
 import getParasites from "../assets/helpers/retrieveData";
-import {
-  collection,
-  addDoc,
-  doc,
-  query,
-  getDocs,
-  Doc,
-  Timestamp,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-} from "firebase/firestore";
+import { doc, Timestamp, setDoc } from "firebase/firestore";
 import db from "./firebase.config";
 import uniqid from "uniqid";
 
 function App() {
+  //shows the stage the player is at
   const [slide, setSlide] = useState(1);
+  //holds characters the player is trying to find and their information
+  const [parasites, setParasites] = useState([]);
+  //opens and closes sliding Nav
   const [closed, setClosed] = useState(false);
-  const [parasites, setParasites] = useState();
+
+  //States that hold values that will be added to database after the game is completed
   const [username, setUsername] = useState("");
   const [id, setId] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [finished, setFinished] = useState(false);
-  console.log(slide);
-  const initializeGame = async (id, user, start, stop) => {
+
+  const addPlayerToDatabase = async (id, user, start, stop) => {
     await setDoc(doc(db, "players", id), {
       username: user,
       startTime: start,
@@ -39,57 +32,42 @@ function App() {
     });
   };
 
-  const addUsername = async (userName) => {
-    const field = await doc(db, "players", id);
-    await updateDoc(field, {
-      username: userName,
-    });
+  const resetGame = () => {
+    getParasites().then((result) => setParasites(result));
+    setUsername("");
+    setId("");
   };
 
-  const deleteGameInstance = async (idCode, user) => {
-    if (!user && id) {
-      await deleteDoc(doc(db, "players", idCode));
-    }
-  };
-
-  // const addStartTime = async () => {
-  //   const field = await doc(db, "players", id);
-  //   await updateDoc(field, {
-  //     startTime: Timestamp.now(),
-  //   });
-  // };
-
-  const addEndTime = async () => {
-    const field = await doc(db, "players", id);
-    await updateDoc(field, {
-      endTime: Timestamp.now(),
-    });
-  };
+  //check if a all characters are found, if they are prompt player to enter username
   useEffect(() => {
-    if (parasites && parasites.every((parasite) => parasite.found)) {
+    if (parasites.every((parasite) => parasite.found)) {
       setSlide(3);
     }
-  }, [parasites, setSlide]);
+  }, [parasites]);
 
+  // slides represent where the player is in the game. Slide = 1 (Intro Pop up), Slide = 2 (Pop Up with start game button), Slide = falsy (The game is active), Slide = 3 (Player Found all characters and is prompted to enter username), slide = 4 (The Game is over, the player entered their usename and their info will be submitted to database)
   useEffect(() => {
-    if (slide === 1) {
-      deleteGameInstance(id, username);
-      getParasites().then((result) => setParasites(result));
-      //reset username
-      setUsername("");
-      setId("");
-    }
-    if (!slide) {
-      setId(uniqid());
-      setStartTime(Timestamp.now());
-      // addStartTime();
-      // addUsername(false);
-    }
-    if (slide === 3) {
-      setEndTime(Timestamp.now());
-    }
-    if (slide === 4) {
-      initializeGame(id, username, startTime, endTime);
+    switch (slide) {
+      case 1:
+        //start game
+        resetGame();
+        break;
+      case 2:
+        //purely a visual change
+        break;
+      case 3:
+        //record when game ended
+        setEndTime(Timestamp.now());
+        break;
+      case 4:
+        //player entered username, now add to database
+        addPlayerToDatabase(id, username, startTime, endTime);
+        break;
+      default:
+        //default is when case is falsy (the game becomes active)
+        setId(uniqid());
+        setStartTime(Timestamp.now());
+        break;
     }
   }, [slide]);
 
@@ -104,8 +82,6 @@ function App() {
           setClosed={setClosed}
         />
         <GameBody
-          setFinished={setFinished}
-          id={id}
           slide={slide}
           setSlide={setSlide}
           setClosed={setClosed}
@@ -113,7 +89,6 @@ function App() {
           setParasites={setParasites}
           username={username}
           setUsername={setUsername}
-          addUsername={addUsername}
         />
       </ThemeProvider>
     </Router>
