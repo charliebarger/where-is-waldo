@@ -24,8 +24,8 @@ const StyledLogo = styled.span`
   }
 `;
 
-const Logo = ({ children }) => {
-  return <StyledLogo>{children}</StyledLogo>;
+const Logo = ({ children, handelEvent }) => {
+  return <StyledLogo onClick={handelEvent}>{children}</StyledLogo>;
 };
 
 export default Logo;

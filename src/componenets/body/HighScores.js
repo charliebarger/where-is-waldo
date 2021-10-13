@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { collection, setDoc, doc, query, getDocs } from "firebase/firestore";
+import {
+  collection,
+  setDoc,
+  doc,
+  getDocs,
+  limit,
+  query,
+  where,
+} from "firebase/firestore";
 import db from "../../componenets/firebase.config";
 
 const ScoreBoardWrapper = styled.div`
@@ -78,7 +86,13 @@ const HighScores = ({
   const [winners, setWinners] = useState("");
   const getLeaders = async () => {
     //get leaders info
-    const querySnapshot = await getDocs(collection(db, "players"));
+    const playerRef = collection(db, "players");
+    const highScores = await query(
+      playerRef,
+      limit(10),
+      where("username", "!=", false)
+    );
+    const querySnapshot = await getDocs(highScores);
     setWinners(querySnapshot.docs);
   };
 

@@ -17,7 +17,7 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = ({ slide, closed, setClosed }) => {
+const Header = ({ slide, setSlide, closed, setClosed }) => {
   //if the screen width is greater than 850 then close the Hamburger Nav
   const closeIcon = (e) => {
     if (e.target.innerWidth > 850) {
@@ -37,7 +37,7 @@ const Header = ({ slide, closed, setClosed }) => {
         setClosed={() => setClosed(!closed)}
       ></Hamburger>
       <SlidingNav setClosed={setClosed} closed={closed}></SlidingNav>
-      <Logo>Where's Waldo</Logo>
+      <Logo handelEvent={() => setSlide(1)}>Where's Waldo</Logo>
       <Nav />
       {!slide && <Timer>00:00:17</Timer>}
     </StyledHeader>

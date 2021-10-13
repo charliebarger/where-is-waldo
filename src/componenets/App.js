@@ -16,6 +16,7 @@ import {
   Timestamp,
   setDoc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import db from "./firebase.config";
 import uniqid from "uniqid";
@@ -28,8 +29,11 @@ function App() {
   const [id, setId] = useState("");
   console.log(username);
 
-  const initializeGame = async () => {
-    await setDoc(doc(db, "players", id), {});
+  const initializeGame = async (id) => {
+    await setDoc(doc(db, "players", id), {
+      username: false,
+      startTime: Timestamp.now(),
+    });
   };
   const addUsername = async (userName) => {
     const field = await doc(db, "players", id);
@@ -38,12 +42,18 @@ function App() {
     });
   };
 
-  const addStartTime = async () => {
-    const field = await doc(db, "players", id);
-    await updateDoc(field, {
-      startTime: Timestamp.now(),
-    });
+  const deleteGameInstance = async (idCode, user) => {
+    if (!user && id) {
+      await deleteDoc(doc(db, "players", idCode));
+    }
   };
+
+  // const addStartTime = async () => {
+  //   const field = await doc(db, "players", id);
+  //   await updateDoc(field, {
+  //     startTime: Timestamp.now(),
+  //   });
+  // };
 
   const addEndTime = async () => {
     const field = await doc(db, "players", id);
@@ -59,12 +69,18 @@ function App() {
 
   useEffect(() => {
     if (slide === 1) {
+      deleteGameInstance(id, username);
       getParasites().then((result) => setParasites(result));
-      setId(uniqid());
+      //reset username
       setUsername("");
+      setId("");
     }
     if (!slide) {
-      addStartTime();
+      let newId = uniqid();
+      setId(newId);
+      initializeGame(newId);
+      // addStartTime();
+      // addUsername(false);
     }
     if (slide === 3) {
       addEndTime();
@@ -72,13 +88,26 @@ function App() {
   }, [slide]);
 
   useEffect(() => {
-    id && initializeGame();
-  }, [id]);
+    const cleanup = () => {
+      console.log("here");
+      deleteGameInstance(id, username);
+    };
+    window.addEventListener("beforeunload", cleanup);
+    return () => {
+      window.removeEventListener("beforeunload", cleanup);
+    };
+  }, []);
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GolbalStyles />
-        <Header slide={slide} closed={closed} setClosed={setClosed} />
+        <Header
+          slide={slide}
+          setSlide={setSlide}
+          closed={closed}
+          setClosed={setClosed}
+        />
         <GameBody
           id={id}
           slide={slide}
