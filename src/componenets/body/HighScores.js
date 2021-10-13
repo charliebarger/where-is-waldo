@@ -82,12 +82,16 @@ const HighScores = ({
     setWinners(querySnapshot.docs);
   };
 
-  useEffect(() => {
+  const updateGame = async () => {
     if (slide === 3) {
-      addUsername(username);
+      await addUsername(username);
     }
-    setSlide(1);
-    getLeaders();
+    // await setSlide(1);
+    await getLeaders();
+  };
+
+  useEffect(() => {
+    updateGame();
   }, [slide, addUsername, setSlide, username]);
   return (
     <div>

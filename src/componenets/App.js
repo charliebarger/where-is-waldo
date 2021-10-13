@@ -13,20 +13,29 @@ import {
   query,
   getDocs,
   Doc,
+  Timestamp,
+  setDoc,
+  updateDoc,
 } from "firebase/firestore";
 import db from "./firebase.config";
+import uniqid from "uniqid";
 
 function App() {
   const [slide, setSlide] = useState(1);
   const [closed, setClosed] = useState(false);
   const [parasites, setParasites] = useState();
   const [username, setUsername] = useState("");
+  const [id, setId] = useState("");
   console.log(username);
 
+  const initializeGame = async () => {
+    await setDoc(doc(db, "players", id), {});
+  };
   const addUsername = async (userName) => {
-    await addDoc(collection(db, "players"), {
+    alert(id);
+    const field = await doc(db, "players", id);
+    await updateDoc(field, {
       username: userName,
-      time: 0,
     });
   };
 
@@ -39,9 +48,14 @@ function App() {
   useEffect(() => {
     if (slide === 1) {
       getParasites().then((result) => setParasites(result));
+      setId(uniqid());
       setUsername("");
     }
   }, [slide]);
+
+  useEffect(() => {
+    id && initializeGame();
+  }, [id]);
   return (
     <Router>
       <ThemeProvider theme={theme}>
