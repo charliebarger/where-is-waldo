@@ -59,6 +59,7 @@ const PopUpWrapper = ({
   username,
   setUsername,
   addUsername,
+  setFinished,
 }) => {
   console.log("rerender");
   return (
@@ -72,9 +73,11 @@ const PopUpWrapper = ({
             </>
           ) : (
             <Slide3
+              setFinished={setFinished}
               username={username}
               setUsername={setUsername}
               addUsername={addUsername}
+              setSlide={setSlide}
             />
           )}
         </Slides>

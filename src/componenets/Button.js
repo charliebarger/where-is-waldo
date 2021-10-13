@@ -23,14 +23,23 @@ const StyledButton = styled.button`
 
 const Button = ({ children, handleEvent, type, form, linkTo, valid }) => {
   const button = (
-    <StyledButton type={type} form={form} onClick={handleEvent}>
+    <StyledButton
+      type={type}
+      onClick={!linkTo ? handleEvent : undefined}
+      form={form}
+    >
       {children}
     </StyledButton>
   );
   return (
     <>
       {linkTo && valid ? (
-        <Link style={{ margin: "auto" }} to={linkTo}>
+        <Link
+          style={{ margin: "auto" }}
+          to={linkTo}
+          form={form}
+          onClick={handleEvent}
+        >
           {button}
         </Link>
       ) : (

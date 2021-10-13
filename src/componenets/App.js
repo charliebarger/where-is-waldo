@@ -27,14 +27,18 @@ function App() {
   const [parasites, setParasites] = useState();
   const [username, setUsername] = useState("");
   const [id, setId] = useState("");
-  console.log(username);
-
-  const initializeGame = async (id) => {
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [finished, setFinished] = useState(false);
+  console.log(slide);
+  const initializeGame = async (id, user, start, stop) => {
     await setDoc(doc(db, "players", id), {
-      username: false,
-      startTime: Timestamp.now(),
+      username: user,
+      startTime: start,
+      stopTime: stop,
     });
   };
+
   const addUsername = async (userName) => {
     const field = await doc(db, "players", id);
     await updateDoc(field, {
@@ -76,27 +80,18 @@ function App() {
       setId("");
     }
     if (!slide) {
-      let newId = uniqid();
-      setId(newId);
-      initializeGame(newId);
+      setId(uniqid());
+      setStartTime(Timestamp.now());
       // addStartTime();
       // addUsername(false);
     }
     if (slide === 3) {
-      addEndTime();
+      setEndTime(Timestamp.now());
+    }
+    if (slide === 4) {
+      initializeGame(id, username, startTime, endTime);
     }
   }, [slide]);
-
-  useEffect(() => {
-    const cleanup = () => {
-      console.log("here");
-      deleteGameInstance(id, username);
-    };
-    window.addEventListener("beforeunload", cleanup);
-    return () => {
-      window.removeEventListener("beforeunload", cleanup);
-    };
-  }, []);
 
   return (
     <Router>
@@ -109,6 +104,7 @@ function App() {
           setClosed={setClosed}
         />
         <GameBody
+          setFinished={setFinished}
           id={id}
           slide={slide}
           setSlide={setSlide}

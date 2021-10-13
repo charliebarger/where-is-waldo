@@ -51,7 +51,14 @@ const NameSectionSpan = styled.span`
   display: block;
   margin-bottom: 10px;
 `;
-const Slide3 = ({ changeSlide, username, setUsername, addUsername }) => {
+const Slide3 = ({
+  changeSlide,
+  username,
+  setUsername,
+  addUsername,
+  setFinished,
+  setSlide,
+}) => {
   const formId = "usernameForm";
   const [validity, setValidity] = useState(false);
 
@@ -75,6 +82,7 @@ const Slide3 = ({ changeSlide, username, setUsername, addUsername }) => {
             formId={formId}
             formValue={username}
             setFormValue={setUsername}
+            setFinished={setFinished}
           />
         </InputWrapper>
       </NameSection>
@@ -85,6 +93,9 @@ const Slide3 = ({ changeSlide, username, setUsername, addUsername }) => {
           linkTo="/high-scores"
           className="submit"
           valid={validity}
+          handleEvent={(e) => {
+            setSlide(4);
+          }}
         >
           Submit
         </Button>

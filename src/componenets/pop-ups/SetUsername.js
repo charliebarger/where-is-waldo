@@ -18,7 +18,13 @@ const NameInput = styled.input`
   color: white;
 `;
 
-const SetUsername = ({ formId, setValidity, formValue, setFormValue }) => {
+const SetUsername = ({
+  formId,
+  setValidity,
+  formValue,
+  setFormValue,
+  handleEvent,
+}) => {
   const submitForm = (e) => {
     e.preventDefault();
     console.log("here");
@@ -36,7 +42,7 @@ const SetUsername = ({ formId, setValidity, formValue, setFormValue }) => {
   };
 
   return (
-    <form id={formId}>
+    <form id={formId} onSubmit={handleEvent}>
       <NameInput
         value={formValue}
         onChange={(e) => {
