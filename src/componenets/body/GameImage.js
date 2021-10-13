@@ -29,6 +29,8 @@ const GameImage = ({
   parasites,
   showMagnify,
   setShowMagnify,
+  id,
+  setSlide,
 }) => {
   const [cords, setCords] = useState("");
   let getCords = (e) => {
@@ -48,6 +50,10 @@ const GameImage = ({
       setShowMagnify(false);
     }
   }, [slide]);
+
+  useEffect(() => {
+    setSlide(1);
+  }, []);
 
   return (
     <ImageWrapper>

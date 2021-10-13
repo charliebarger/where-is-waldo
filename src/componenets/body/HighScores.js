@@ -87,7 +87,6 @@ const HighScores = ({
       await addUsername(username);
     }
     await getLeaders();
-    await setSlide(1);
   };
 
   useEffect(() => {

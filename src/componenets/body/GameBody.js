@@ -131,6 +131,8 @@ const GameBody = ({
             {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
             <SideCharacters slide={slide} parasites={parasites} />
             <GameImage
+              id={id}
+              setSlide={setSlide}
               showMagnify={showMagnify}
               setShowMagnify={setShowMagnify}
               slide={slide}
