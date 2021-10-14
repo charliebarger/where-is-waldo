@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { collection, getDocs, limit, query } from "firebase/firestore";
+import { collection, getDocs, limit, query, orderBy } from "firebase/firestore";
 import db from "../../componenets/firebase.config";
+import FormatTime from "../../assets/helpers/formatTime";
 
 //Start Styles
 
@@ -58,6 +59,7 @@ const Numbers = styled.div`
 
 const UserNames = styled.div`
   font-size: 22px;
+  font-family: "Gemunu Libre", sans-serif;
   @media ${({ theme }) => theme.mediaQueries.below550} {
     ${({ place }) =>
       !place &&
@@ -72,20 +74,23 @@ const UserNames = styled.div`
 
 //End Styles
 
-const HighScores = () => {
+const HighScores = ({ slide, setSlide }) => {
   const [winners, setWinners] = useState("");
 
   //get top 10 player on the leaderbaord
   const getLeaders = async () => {
     const playerRef = collection(db, "players");
-    const highScores = await query(playerRef, limit(10));
+    const highScores = await query(playerRef, limit(10), orderBy("time"));
     const querySnapshot = await getDocs(highScores);
     setWinners(querySnapshot.docs);
   };
 
   useEffect(() => {
+    if (slide !== 4) {
+      setSlide(1);
+    }
     getLeaders();
-  }, []);
+  }, [slide]);
 
   return (
     <div>
@@ -102,7 +107,7 @@ const HighScores = () => {
                 <>
                   <Numbers>{index + 1}</Numbers>
                   <UserNames>{winner.username}</UserNames>
-                  <Numbers>{winner.time}</Numbers>
+                  <Numbers>{FormatTime(winner.time)}</Numbers>
                 </>
               );
             })}

@@ -23,16 +23,25 @@ function App() {
   const [id, setId] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  //
+  const [second, setSecond] = useState("chicken");
+  const [isActive, setIsActive] = useState(false);
 
-  const addPlayerToDatabase = async (id, user, start, stop) => {
+  function stopTimer() {
+    setSecond(0);
+    setIsActive(false);
+  }
+
+  const addPlayerToDatabase = async (id, user, second) => {
     await setDoc(doc(db, "players", id), {
       username: user,
-      startTime: start,
-      stopTime: stop,
+      time: second,
     });
   };
 
   const resetGame = () => {
+    console.log("resetting");
+    stopTimer();
     getParasites().then((result) => setParasites(result));
     setUsername("");
     setId("");
@@ -51,6 +60,7 @@ function App() {
     switch (slide) {
       case 1:
         //start game
+        console.log("here");
         resetGame();
         break;
       case 2:
@@ -58,16 +68,19 @@ function App() {
         break;
       case 3:
         //record when game ended
+        setIsActive(false);
         setEndTime(Timestamp.now());
         break;
       case 4:
         //player entered username, now add to database
-        addPlayerToDatabase(id, username, startTime, endTime);
+        addPlayerToDatabase(id, username, second);
         break;
       default:
         //default is when case is falsy (the game becomes active)
+        // setSecond(0);
+        setIsActive(true);
         setId(uniqid());
-        setStartTime(Timestamp.now());
+        // setStartTime(Timestamp.now());
         break;
     }
   }, [slide]);
@@ -77,12 +90,16 @@ function App() {
       <ThemeProvider theme={theme}>
         <GolbalStyles />
         <Header
+          isActive={isActive}
+          setSecond={setSecond}
+          second={second}
           slide={slide}
           setSlide={setSlide}
           closed={closed}
           setClosed={setClosed}
         />
         <GameBody
+          second={second}
           slide={slide}
           setSlide={setSlide}
           setClosed={setClosed}

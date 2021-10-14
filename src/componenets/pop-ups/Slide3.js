@@ -57,7 +57,7 @@ const NameSectionSpan = styled.span`
 
 //End Styles
 
-const Slide3 = ({ username, setUsername, setSlide }) => {
+const Slide3 = ({ username, setUsername, setSlide, second }) => {
   const [validity, setValidity] = useState(false);
   const formId = "username";
   return (
@@ -67,7 +67,7 @@ const Slide3 = ({ username, setUsername, setSlide }) => {
       </ImageWrapper>
       <DialogWrapper>
         <PopUpHead>Wubba Lubba Dub Dub!</PopUpHead>
-        <Timer finished>00:01:24</Timer>
+        <Timer finished second={second}></Timer>
       </DialogWrapper>
       <NameSection>
         <NameSectionSpan>

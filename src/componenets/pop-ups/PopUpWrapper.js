@@ -60,6 +60,7 @@ const PopUpWrapper = ({
   username,
   setUsername,
   parasites,
+  second,
 }) => {
   return (
     <CoverScreen slide={slide}>
@@ -75,6 +76,7 @@ const PopUpWrapper = ({
             </>
           ) : (
             <Slide3
+              second={second}
               username={username}
               setUsername={setUsername}
               setSlide={setSlide}

@@ -21,7 +21,15 @@ const StyledHeader = styled.header`
 
 //End Styles
 
-const Header = ({ slide, setSlide, closed, setClosed }) => {
+const Header = ({
+  slide,
+  setSlide,
+  closed,
+  setClosed,
+  second,
+  isActive,
+  setSecond,
+}) => {
   useEffect(() => {
     //if the screen width is greater than 850 then close the Hamburger Nav
     const closeIcon = (e) => {
@@ -46,7 +54,13 @@ const Header = ({ slide, setSlide, closed, setClosed }) => {
       <Logo handelEvent={() => setSlide(1)}>Where's Waldo</Logo>
       <Nav />
       {/* if the game is active render a Timer */}
-      {!slide && <Timer>00:00:17</Timer>}
+      {!slide && (
+        <Timer
+          isActive={isActive}
+          setSecond={setSecond}
+          second={second}
+        ></Timer>
+      )}
     </StyledHeader>
   );
 };

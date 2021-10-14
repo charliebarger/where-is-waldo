@@ -48,6 +48,7 @@ const GameBody = ({
   setParasites,
   username,
   setUsername,
+  second,
 }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
@@ -151,6 +152,7 @@ const GameBody = ({
               parasites={parasites}
             />
             <PopUpWrapper
+              second={second}
               slide={slide}
               setSlide={setSlide}
               username={username}
