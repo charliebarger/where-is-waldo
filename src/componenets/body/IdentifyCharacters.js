@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+//Start Styles
+
 const NameWrapper = styled.div`
   position: absolute;
   z-index: 1;
@@ -101,8 +103,9 @@ const SelectParasite = styled.span`
     `}
 `;
 
+//End Styles
+
 const IdentifyCharacters = ({ cords, parasites, checkForHit }) => {
-  console.log(checkForHit);
   return (
     <NameWrapper cords={cords}>
       {parasites.map((parasite) => (

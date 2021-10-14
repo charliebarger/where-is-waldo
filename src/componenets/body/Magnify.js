@@ -1,6 +1,9 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import IdentifyCharacters from "./IdentifyCharacters";
+
+//Start Styles
+
 const Tagger = styled.div`
   box-shadow: 2px 2px 12px 7px black;
   position: absolute;
@@ -27,6 +30,8 @@ const Tagger = styled.div`
     padding: 4px;
   }
 `;
+
+//End Styles
 
 const MagnifyingGlass = ({ cords, parasites, checkForHit }) => {
   return (

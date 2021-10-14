@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import React from "react";
+
+//Start Styles
+
 const StyledLogo = styled.span`
   -webkit-text-stroke: 1.5px ${({ theme }) => theme.colors.yellow};
   color: ${({ theme }) => theme.colors.blue};
@@ -23,6 +26,8 @@ const StyledLogo = styled.span`
     padding: 40px 20px;
   }
 `;
+
+//End Styles
 
 const Logo = ({ children, handelEvent }) => {
   return <StyledLogo onClick={handelEvent}>{children}</StyledLogo>;

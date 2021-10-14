@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import StyledPopUp from "./Slides";
+import StyledPopUp from "./StyledPopUp";
 import rick1 from "../../assets/rick1.png";
 import Button from "../Button";
+
+//Start Styles
 
 const ImageWrapper = styled.div`
   display: flex;
@@ -49,6 +51,8 @@ const SubText = styled.p`
     }
   }
 `;
+
+//End Styles
 
 const Slide1 = ({ changeSlide }) => {
   return (

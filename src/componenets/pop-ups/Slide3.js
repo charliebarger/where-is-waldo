@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import StyledPopUp from "./Slides";
+import StyledPopUp from "./StyledPopUp";
 import rick1 from "../../assets/rick1.png";
 import Button from "../Button";
 import Timer from "../header/Timer";
 import SetUsername from "./SetUsername";
+
+//Start Styles
 
 const ImageWrapper = styled.div`
   display: flex;
@@ -45,14 +47,17 @@ const NameSection = styled.div`
 `;
 
 const InputWrapper = styled.div``;
+
 const NameSectionSpan = styled.span`
   font-size: 27px;
   text-align: center;
   display: block;
   margin-bottom: 10px;
 `;
+
+//End Styles
+
 const Slide3 = ({ username, setUsername, setSlide }) => {
-  const formId = "usernameForm";
   const [validity, setValidity] = useState(false);
 
   return (
@@ -68,11 +73,10 @@ const Slide3 = ({ username, setUsername, setSlide }) => {
         <NameSectionSpan>
           Let's Get You on the Global Leaderboard!
         </NameSectionSpan>
-        <InputWrapper required>
+        <InputWrapper>
           <NameSectionSpan>What's your name Bruh?</NameSectionSpan>
           <SetUsername
             setValidity={setValidity}
-            formId={formId}
             formValue={username}
             setFormValue={setUsername}
           />
@@ -81,11 +85,10 @@ const Slide3 = ({ username, setUsername, setSlide }) => {
       <ButtonPosition>
         <Button
           type="submit"
-          form={formId}
           linkTo="/high-scores"
           className="submit"
           valid={validity}
-          handleEvent={(e) => {
+          handleEvent={() => {
             setSlide(4);
           }}
         >

@@ -1,5 +1,7 @@
 import React from "react";
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+//Start Styles
 
 const rotatePhone = keyframes`
 0% {
@@ -81,6 +83,8 @@ const Exit = styled.div`
     transform: translateY(-2.5px) rotate(-135deg);
   }
 `;
+
+//End Styles
 
 const TurnPhone = ({ setClose }) => {
   return (

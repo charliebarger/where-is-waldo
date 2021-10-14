@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import StyledPopUp from "./Slides";
-import amishCyborg from "../../assets/parasites/amishCyborg.png";
-import ghostInAJar from "../../assets/parasites/ghostInAJar.png";
-import reverseGiraffe from "../../assets/parasites/reverseGiraffe.png";
+import StyledPopUp from "./StyledPopUp";
 import Button from "../Button";
 import Parasites from "./Parasite";
+
+//Start Styles
 
 const ImageSection = styled.div`
   grid-template-rows: 1 /2;
@@ -22,14 +21,21 @@ const StyledHeader = styled.h1`
   color: white;
 `;
 
-const Slide2 = ({ changeSlide }) => {
+//End Styles
+
+const Slide2 = ({ changeSlide, parasites }) => {
   return (
     <StyledPopUp place={2}>
       <StyledHeader>Find These Parasites!</StyledHeader>
       <ImageSection>
-        <Parasites parasiteName="Amish Cyborg" imgSource={amishCyborg} />
-        <Parasites parasiteName="Ghost In A Jar" imgSource={ghostInAJar} />
-        <Parasites parasiteName="Reverse Giraffe" imgSource={reverseGiraffe} />
+        {parasites.map((parasite) => {
+          return (
+            <Parasites
+              parasiteName={parasite.name}
+              imgSource={parasite["fullBody"]}
+            />
+          );
+        })}
       </ImageSection>
       <Button handleEvent={changeSlide} style={{ gridRow: "-1" }}>
         Play

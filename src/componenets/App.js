@@ -14,7 +14,7 @@ function App() {
   //shows the stage the player is at
   const [slide, setSlide] = useState(1);
   //holds characters the player is trying to find and their information
-  const [parasites, setParasites] = useState([]);
+  const [parasites, setParasites] = useState("");
   //opens and closes sliding Nav
   const [closed, setClosed] = useState(false);
 
@@ -40,7 +40,8 @@ function App() {
 
   //check if a all characters are found, if they are prompt player to enter username
   useEffect(() => {
-    if (parasites.every((parasite) => parasite.found)) {
+    if (parasites && parasites.every((parasite) => parasite.found)) {
+      console.log("all found");
       setSlide(3);
     }
   }, [parasites]);

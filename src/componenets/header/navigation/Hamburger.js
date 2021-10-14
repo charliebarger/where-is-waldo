@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+//Start Styles
+
 const HamburgerIcon = styled.div`
   display: none;
   @media ${({ theme }) => theme.mediaQueries.below850} {
@@ -54,6 +56,8 @@ const HamburgerIcon = styled.div`
       `}
   }
 `;
+
+//End Styles
 
 const Hamburger = ({ closed, setClosed, slide }) => {
   return (

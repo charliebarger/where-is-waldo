@@ -3,22 +3,20 @@ import styled, { css } from "styled-components";
 import FindParasites from "./Slide2";
 import Intro from "./Slide1";
 import Slide3 from "./Slide3";
+
+//Start Styles
+
 const Wrapper = styled.div`
   width: 600px;
   height: 400px;
   overflow: hidden;
   z-index: 10;
-  /* top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0; */
-  /* margin: 40px auto; */
   position: absolute;
   transition: all 0.25s;
   display: flex;
 `;
 
-const TryIT = styled.div`
+const CoverScreen = styled.div`
   display: ${({ slide }) => (slide ? "flex" : "none")};
   justify-content: center;
   position: absolute;
@@ -53,16 +51,27 @@ const Slides = styled.div`
       transform: translateX(calc(-50% - 10px));
     `}
 `;
-const PopUpWrapper = ({ slide, setSlide, username, setUsername }) => {
-  console.log("rerender");
+
+//End Styles
+
+const PopUpWrapper = ({
+  slide,
+  setSlide,
+  username,
+  setUsername,
+  parasites,
+}) => {
   return (
-    <TryIT slide={slide}>
+    <CoverScreen slide={slide}>
       <Wrapper slide={slide}>
         <Slides slide={slide}>
-          {slide && slide !== 3 ? (
+          {slide !== 3 ? (
             <>
               <Intro changeSlide={() => setSlide(2)}></Intro>
-              <FindParasites changeSlide={() => setSlide("")}></FindParasites>
+              <FindParasites
+                parasites={parasites}
+                changeSlide={() => setSlide("")}
+              ></FindParasites>
             </>
           ) : (
             <Slide3
@@ -73,7 +82,7 @@ const PopUpWrapper = ({ slide, setSlide, username, setUsername }) => {
           )}
         </Slides>
       </Wrapper>
-    </TryIT>
+    </CoverScreen>
   );
 };
 

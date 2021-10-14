@@ -2,6 +2,8 @@ import styled, { css } from "styled-components";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+//Start Styles
+
 const StyledNavItem = styled(NavLink)`
   text-decoration: none;
   display: inline-block;
@@ -36,6 +38,8 @@ const StyledNavItem = styled(NavLink)`
       margin: 0px 50px;
     `}
 `;
+
+//End Styles
 
 const NavItem = ({ children, side, mobile, linkPath, setClosed }) => {
   return (

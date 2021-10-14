@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 const Filter = require("bad-words");
 const NameInput = styled.input`
@@ -18,23 +18,10 @@ const NameInput = styled.input`
   color: white;
 `;
 
-const SetUsername = ({
-  formId,
-  setValidity,
-  formValue,
-  setFormValue,
-  handleEvent,
-}) => {
-  const submitForm = (e) => {
-    e.preventDefault();
-    console.log("here");
-    setFormValue("");
-  };
-
+const SetUsername = ({ setValidity, formValue, setFormValue }) => {
   const updateForm = (word) => {
     const filter = new Filter({
       placeHolder: "No Naught Words",
-      regex: /\*|\.|$/gi,
     });
     filter.isProfane(word)
       ? setFormValue("No Naughty Words")
@@ -42,7 +29,7 @@ const SetUsername = ({
   };
 
   return (
-    <form id={formId} onSubmit={handleEvent}>
+    <form>
       <NameInput
         value={formValue}
         onChange={(e) => {

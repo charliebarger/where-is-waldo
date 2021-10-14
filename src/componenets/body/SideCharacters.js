@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import amishCyborgCloseUp from "../../assets/parasites/amishCyborgCloseUp.png";
-import ghostInAJar from "../../assets/parasites/ghostInAJar.png";
-import reverseGiraffeCloseUp from "../../assets/parasites/reverseGiraffeCloseUp.png";
 import Parasites from "../pop-ups/Parasite";
 import arrow from "../../assets/arrow.png";
+
+// Start Styles
 
 const Arrow = styled.div`
   cursor: ${({ slide }) => (slide ? "default" : "pointer")};
@@ -51,9 +50,12 @@ const CharacterWrapper = styled.div`
     `}
 `;
 
+// End Styles
+
 const SideCharacters = ({ slide, parasites }) => {
   const [closed, setClosed] = useState(true);
 
+  //open characters during game, close otherwise
   useEffect(() => {
     slide ? setClosed(true) : setClosed(false);
   }, [slide]);
@@ -78,21 +80,6 @@ const SideCharacters = ({ slide, parasites }) => {
             />
           );
         })}
-        {/* <Parasites
-          header
-          parasiteName="Amish Cyborg"
-          imgSource={amishCyborgCloseUp}
-        />
-        <Parasites
-          header
-          parasiteName="Ghost In A Jar"
-          imgSource={ghostInAJar}
-        />
-        <Parasites
-          header
-          parasiteName="Reverse Giraffe"
-          imgSource={reverseGiraffeCloseUp}
-        /> */}
       </CharacterWrapper>
     </>
   );

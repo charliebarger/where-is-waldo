@@ -22,8 +22,6 @@ body{
     min-height: 100vh;
     position:relative;
 }
-
-
 `;
 
 export default GolbalStyles;

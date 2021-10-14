@@ -3,6 +3,8 @@ import background from "../../assets/background.png";
 import styled, { css } from "styled-components";
 import MagnifyingGlass from "./Magnify";
 
+//Start Styles
+
 const ImageWrapper = styled.div`
   position: relative;
 `;
@@ -23,6 +25,9 @@ const StyledImage = styled.img`
         default !important;
     `}
 `;
+
+//End Styles
+
 const GameImage = ({
   slide,
   checkForHit,
@@ -32,16 +37,24 @@ const GameImage = ({
   setSlide,
 }) => {
   const [cords, setCords] = useState("");
+
   let getCords = (e) => {
     const imageSize = e.target.getBoundingClientRect();
     let offSet = e.target.parentElement.parentElement;
     const xCord = ((e.pageX - offSet.offsetLeft) / imageSize.width) * 100;
     const yCord = ((e.pageY - offSet.offsetTop) / imageSize.height) * 100;
-    /* checkForHit({ x: xCord, y: yCord }); */
     setCords({
       x: xCord,
       y: yCord,
     });
+  };
+
+  //if magnify icon is false at time of click get the coordinates of click, toggle showing the icon everytime
+  const handleClick = (e) => {
+    if (!showMagnify) {
+      getCords(e);
+    }
+    setShowMagnify(!showMagnify);
   };
 
   useEffect(() => {
@@ -50,6 +63,7 @@ const GameImage = ({
     }
   }, [slide]);
 
+  //reset game on render
   useEffect(() => {
     setSlide(1);
   }, []);
@@ -57,15 +71,9 @@ const GameImage = ({
   return (
     <ImageWrapper>
       <StyledImage
-        onClick={(e) => {
-          ///bug is here
-          if (!showMagnify) {
-            getCords(e);
-          }
-          setShowMagnify(!showMagnify);
-        }}
+        onClick={handleClick}
         slide={slide}
-        alt="Rick and Morty Themed Where's Waldo Styled"
+        alt="Rick and Morty Themed Where's Waldo Game"
         src={background}
       />
       {showMagnify && (

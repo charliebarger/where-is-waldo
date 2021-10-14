@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import getParasites from "../../assets/helpers/retrieveData";
 import GameImage from "./GameImage";
 import styled from "styled-components";
-import PopUpWrapper from "../pop-ups/PopUpWindow";
-// import amishCyborgCloseUp from "../../assets/parasites/amishCyborgCloseUp.png";
-// import ghostInAJar from "../../assets/parasites/ghostInAJar.png";
-// import reverseGiraffeCloseUp from "../../assets/parasites/reverseGiraffeCloseUp.png";
+import PopUpWrapper from "../pop-ups/PopUpWrapper";
 import SideCharacters from "./SideCharacters";
-// import amishCyborg from "../../assets/parasites/amishCyborg.png";
-// import reverseGiraffe from "../../assets/parasites/reverseGiraffe.png";
 import TurnPhone from "./TurnPhone";
 import HighScores from "./HighScores";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import emojiRick from "../../assets/rickEmoji.png";
+
+//Start Styles
 
 const Body = styled.div`
   padding-bottom: 40px;
@@ -42,7 +38,7 @@ const WrongAlert = styled(ToastContainer)`
   }
 `;
 
-// const ImageMatch =
+//End Styles
 
 const GameBody = ({
   slide,
@@ -57,7 +53,7 @@ const GameBody = ({
   const [Xclicked, setXclicked] = useState(false);
   const [showMagnify, setShowMagnify] = useState(false);
 
-  console.log(username);
+  //Appends and Removes Pop Up that tells the user to turn their phone based on screen width. If the pop up is exited then dont show agian no matter the screen size
   const closePopUp = (width) => {
     if (width < 400 && !Xclicked) {
       setTurnPhoneAlert(true);
@@ -68,10 +64,18 @@ const GameBody = ({
 
   //closes turn phone pop up on screen resize
   useEffect(() => {
+    const checkForClose = (e) => {
+      closePopUp(e.target.innerWidth);
+    };
+    //call on inital render
     closePopUp(window.screen.width);
-    window.addEventListener("resize", (e) => closePopUp(e.target.innerWidth));
+    //call every time the screen is resized
+    window.addEventListener("resize", checkForClose);
+
+    return () => window.removeEventListener("resize", checkForClose);
   }, [Xclicked]);
 
+  //takes a cordinate and returns a 10% radius around that point
   const getArea = (cords) => {
     return {
       top: cords.y + 5,
@@ -81,6 +85,7 @@ const GameBody = ({
     };
   };
 
+  //check if cords are within an area
   const getHitStatus = (cords, parasite) => {
     return cords.y < parasite.top &&
       cords.y > parasite.bottom &&
@@ -90,15 +95,32 @@ const GameBody = ({
       : false;
   };
 
+  const foundNewCharacter = (parasite, selectedParasite, cords) => {
+    return (
+      parasite.id === selectedParasite &&
+      getHitStatus(cords, getArea(parasite.cords)) &&
+      !parasite.found
+    );
+  };
+
+  const errorMessage = () => {
+    return toast("Thats Wrong Bruh", {
+      position: "top-left",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    });
+  };
+
+  //takes coordinates and the parasite name that was selected. Check if a new character is found.
   const findHitItem = (cords, selectedParasite) => {
-    console.log(cords, selectedParasite);
     if (
-      parasites.some(
-        (parasite) =>
-          parasite.id === selectedParasite &&
-          getHitStatus(cords, getArea(parasite.cords)) &&
-          !parasite.found
-      )
+      parasites.some((parasite) => {
+        return foundNewCharacter(parasite, selectedParasite, cords);
+      })
     ) {
       setShowMagnify(false);
       setParasites(
@@ -109,15 +131,7 @@ const GameBody = ({
         )
       );
     } else {
-      toast("Thats Wrong Bruh", {
-        position: "top-left",
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-      });
+      errorMessage();
     }
   };
 
@@ -141,6 +155,7 @@ const GameBody = ({
               setSlide={setSlide}
               username={username}
               setUsername={setUsername}
+              parasites={parasites}
             ></PopUpWrapper>
           </Route>
           <Route path="/high-scores">

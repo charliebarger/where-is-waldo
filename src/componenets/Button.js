@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
+//Start Styles
+
 const StyledButton = styled.button`
   border-radius: 5px;
   font-size: 28px;
@@ -21,25 +24,14 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ children, handleEvent, type, form, linkTo, valid }) => {
-  const button = (
-    <StyledButton
-      type={type}
-      onClick={!linkTo ? handleEvent : undefined}
-      form={form}
-    >
-      {children}
-    </StyledButton>
-  );
+//End Styles
+
+const Button = ({ children, handleEvent, linkTo, valid }) => {
+  const button = <StyledButton onClick={handleEvent}>{children}</StyledButton>;
   return (
     <>
-      {linkTo && valid ? (
-        <Link
-          style={{ margin: "auto" }}
-          to={linkTo}
-          form={form}
-          onClick={handleEvent}
-        >
+      {valid ? (
+        <Link style={{ margin: "auto" }} to={linkTo}>
           {button}
         </Link>
       ) : (

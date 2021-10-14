@@ -6,6 +6,8 @@ import Timer from "./Timer";
 import Logo from "./Logo";
 import Nav from "./navigation/Nav";
 
+//Start Styles
+
 const StyledHeader = styled.header`
   border-bottom: 2px solid white;
   height: 100px;
@@ -17,16 +19,20 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = ({ slide, setSlide, closed, setClosed }) => {
-  //if the screen width is greater than 850 then close the Hamburger Nav
-  const closeIcon = (e) => {
-    if (e.target.innerWidth > 850) {
-      setClosed(false);
-    }
-  };
+//End Styles
 
+const Header = ({ slide, setSlide, closed, setClosed }) => {
   useEffect(() => {
+    //if the screen width is greater than 850 then close the Hamburger Nav
+    const closeIcon = (e) => {
+      if (e.target.innerWidth > 850) {
+        setClosed(false);
+      }
+    };
+
     window.addEventListener("resize", closeIcon);
+
+    return () => window.removeEventListener("resize", closeIcon);
   }, []);
 
   return (
@@ -39,6 +45,7 @@ const Header = ({ slide, setSlide, closed, setClosed }) => {
       <SlidingNav setClosed={setClosed} closed={closed}></SlidingNav>
       <Logo handelEvent={() => setSlide(1)}>Where's Waldo</Logo>
       <Nav />
+      {/* if the game is active render a Timer */}
       {!slide && <Timer>00:00:17</Timer>}
     </StyledHeader>
   );

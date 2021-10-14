@@ -2,6 +2,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import NavItem from "./NavItem";
 
+//Start Styles
+
 const StyledSlidingNav = styled.nav`
   bottom: 0;
   display: flex;
@@ -41,6 +43,8 @@ const NavItemWrapper = styled.div`
   width: 100%;
   text-align: center;
 `;
+
+//End Styles
 
 const SlidingNav = ({ closed, setClosed }) => {
   return (
