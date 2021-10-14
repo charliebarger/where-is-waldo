@@ -28,11 +28,26 @@ const SetUsername = ({ setValidity, formValue, setFormValue, formId }) => {
       : setFormValue(word);
   };
 
+  const checkForSpaces = (word) => {
+    const regex = new RegExp(`/^\S*$/`);
+    return regex.test(word);
+  };
+
   return (
     <form id={formId}>
       <NameInput
+        maxLength={15}
+        pattern={"[^' ']+"}
+        onInvalid={(e) => {
+          if (/\s/.test(e.target.value)) {
+            e.target.setCustomValidity("No Spaces Bruh");
+          } else {
+            e.target.setCustomValidity("Fill Out the Form Bruh");
+          }
+        }}
         value={formValue}
         onChange={(e) => {
+          e.target.setCustomValidity("");
           updateForm(e.target.value);
           setValidity(e.target.validity.valid);
         }}

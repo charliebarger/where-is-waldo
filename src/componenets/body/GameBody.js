@@ -49,6 +49,7 @@ const GameBody = ({
   username,
   setUsername,
   second,
+  setIsActive,
 }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
@@ -141,7 +142,12 @@ const GameBody = ({
       {parasites && (
         <Switch>
           <Route exact path="/">
-            {turnPhoneAlert && <TurnPhone setClose={setXclicked}></TurnPhone>}
+            {turnPhoneAlert && (
+              <TurnPhone
+                setIsActive={setIsActive}
+                setClose={setXclicked}
+              ></TurnPhone>
+            )}
             <SideCharacters slide={slide} parasites={parasites} />
             <GameImage
               setSlide={setSlide}

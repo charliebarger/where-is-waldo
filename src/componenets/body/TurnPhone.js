@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 //Start Styles
@@ -86,7 +86,12 @@ const Exit = styled.div`
 
 //End Styles
 
-const TurnPhone = ({ setClose }) => {
+const TurnPhone = ({ setClose, setIsActive }) => {
+  useEffect(() => {
+    setIsActive(false);
+    return () => setIsActive(true);
+  }, [setIsActive]);
+
   return (
     <BlurBackground>
       <PhoneWrapper>

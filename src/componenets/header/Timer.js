@@ -59,7 +59,6 @@ const TimeWrapper = styled.div`
 
 const Time = styled.span`
   text-align: center;
-
   margin: auto;
 `;
 

@@ -99,6 +99,7 @@ function App() {
           setClosed={setClosed}
         />
         <GameBody
+          setIsActive={setIsActive}
           second={second}
           slide={slide}
           setSlide={setSlide}
