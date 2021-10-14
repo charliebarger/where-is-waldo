@@ -2,12 +2,16 @@ import styled from "styled-components";
 import React from "react";
 import NavItem from "./NavItem";
 
+//Start Styles
+
 const NavWrapper = styled.nav`
   margin-left: auto;
   @media ${({ theme }) => theme.mediaQueries.below850} {
     display: none;
   }
 `;
+
+//End Styles
 
 const Nav = () => {
   return (

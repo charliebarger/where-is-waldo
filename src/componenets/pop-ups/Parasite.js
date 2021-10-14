@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+//Start Styles
+
 const ImageFigure = styled.figure`
   margin: 0px;
   position: relative;
@@ -97,6 +99,8 @@ const ImageLabel = styled.figcaption`
   text-align: center;
   font-size: 22px;
 `;
+
+//Start Styles
 
 const Parasites = ({ imgSource, parasiteName, header, found }) => {
   return (
