@@ -20,17 +20,14 @@ const NameInput = styled.input`
 
 const SetUsername = ({ setValidity, formValue, setFormValue, formId }) => {
   const updateForm = (word) => {
-    const filter = new Filter({
-      placeHolder: "No Naught Words",
-    });
-    filter.isProfane(word)
-      ? setFormValue("No Naughty Words")
-      : setFormValue(word);
-  };
-
-  const checkForSpaces = (word) => {
-    const regex = new RegExp(`/^\S*$/`);
-    return regex.test(word);
+    const filter = new Filter();
+    return filter.isProfane(word);
+    // {
+    //   e.target.validity.valid = false;
+    //   e.target.setCustomValidity("No Naughty Words Bruh");
+    // } else {
+    //   setFormValue(e.target.value);
+    // }
   };
 
   return (
@@ -42,13 +39,15 @@ const SetUsername = ({ setValidity, formValue, setFormValue, formId }) => {
           if (/\s/.test(e.target.value)) {
             e.target.setCustomValidity("No Spaces Bruh");
           } else {
-            e.target.setCustomValidity("Fill Out the Form Bruh");
+            e.target.setCustomValidity("No Naughty Words Bruh");
           }
         }}
         value={formValue}
         onChange={(e) => {
-          e.target.setCustomValidity("");
-          updateForm(e.target.value);
+          updateForm(e.target.value)
+            ? e.target.setCustomValidity("No Bad Words Bruh")
+            : e.target.setCustomValidity("");
+          setFormValue(e.target.value);
           setValidity(e.target.validity.valid);
         }}
         placeholder="Username"
