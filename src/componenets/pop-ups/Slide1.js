@@ -66,7 +66,11 @@ const Slide1 = ({ changeSlide }) => {
           Parasites Invaded Our House! Can you Help Me Find Them?
         </SubText>
       </DialogWrapper>
-      <Button handleEvent={changeSlide} style={{ gridArea: "2 / 2 / 3 / 3" }}>
+      <Button
+        handleEvent={changeSlide}
+        style={{ gridArea: "2 / 2 / 3 / 3" }}
+        valid
+      >
         Next
       </Button>
     </StyledPopUp>

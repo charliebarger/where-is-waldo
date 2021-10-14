@@ -37,7 +37,7 @@ const Slide2 = ({ changeSlide, parasites }) => {
           );
         })}
       </ImageSection>
-      <Button handleEvent={changeSlide} style={{ gridRow: "-1" }}>
+      <Button handleEvent={changeSlide} style={{ gridRow: "-1" }} valid>
         Play
       </Button>
     </StyledPopUp>

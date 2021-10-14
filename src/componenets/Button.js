@@ -26,8 +26,12 @@ const StyledButton = styled.button`
 
 //End Styles
 
-const Button = ({ children, handleEvent, linkTo, valid }) => {
-  const button = <StyledButton onClick={handleEvent}>{children}</StyledButton>;
+const Button = ({ children, handleEvent, linkTo, valid, formId }) => {
+  const button = (
+    <StyledButton onClick={valid ? handleEvent : undefined} form={formId}>
+      {children}
+    </StyledButton>
+  );
   return (
     <>
       {valid ? (

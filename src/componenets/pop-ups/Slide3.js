@@ -59,7 +59,7 @@ const NameSectionSpan = styled.span`
 
 const Slide3 = ({ username, setUsername, setSlide }) => {
   const [validity, setValidity] = useState(false);
-
+  const formId = "username";
   return (
     <StyledPopUp place={3}>
       <ImageWrapper>
@@ -76,6 +76,7 @@ const Slide3 = ({ username, setUsername, setSlide }) => {
         <InputWrapper>
           <NameSectionSpan>What's your name Bruh?</NameSectionSpan>
           <SetUsername
+            formId={formId}
             setValidity={setValidity}
             formValue={username}
             setFormValue={setUsername}
@@ -84,6 +85,7 @@ const Slide3 = ({ username, setUsername, setSlide }) => {
       </NameSection>
       <ButtonPosition>
         <Button
+          formId={formId}
           type="submit"
           linkTo="/high-scores"
           className="submit"

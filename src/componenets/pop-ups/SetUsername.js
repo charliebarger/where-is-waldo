@@ -18,7 +18,7 @@ const NameInput = styled.input`
   color: white;
 `;
 
-const SetUsername = ({ setValidity, formValue, setFormValue }) => {
+const SetUsername = ({ setValidity, formValue, setFormValue, formId }) => {
   const updateForm = (word) => {
     const filter = new Filter({
       placeHolder: "No Naught Words",
@@ -29,7 +29,7 @@ const SetUsername = ({ setValidity, formValue, setFormValue }) => {
   };
 
   return (
-    <form>
+    <form id={formId}>
       <NameInput
         value={formValue}
         onChange={(e) => {
