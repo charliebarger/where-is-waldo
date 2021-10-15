@@ -139,24 +139,24 @@ const GameBody = ({
 
   return (
     <Body onClick={() => setClosed(false)}>
-      {parasites && (
-        <Switch>
-          <Route exact path="/">
-            {turnPhoneAlert && (
-              <TurnPhone
-                setIsActive={setIsActive}
-                setClose={setXclicked}
-              ></TurnPhone>
-            )}
-            <SideCharacters slide={slide} parasites={parasites} />
-            <GameImage
-              setSlide={setSlide}
-              showMagnify={showMagnify}
-              setShowMagnify={setShowMagnify}
-              slide={slide}
-              checkForHit={findHitItem}
-              parasites={parasites}
-            />
+      <Switch>
+        <Route exact path="/">
+          {turnPhoneAlert && (
+            <TurnPhone
+              setIsActive={setIsActive}
+              setClose={setXclicked}
+            ></TurnPhone>
+          )}
+          {parasites && <SideCharacters slide={slide} parasites={parasites} />}
+          <GameImage
+            setSlide={setSlide}
+            showMagnify={showMagnify}
+            setShowMagnify={setShowMagnify}
+            slide={slide}
+            checkForHit={findHitItem}
+            parasites={parasites}
+          />
+          {parasites && (
             <PopUpWrapper
               second={second}
               slide={slide}
@@ -165,17 +165,17 @@ const GameBody = ({
               setUsername={setUsername}
               parasites={parasites}
             ></PopUpWrapper>
-          </Route>
-          <Route path="/high-scores">
-            <HighScores
-              slide={slide}
-              setSlide={setSlide}
-              username={username}
-              setUsername={setUsername}
-            ></HighScores>
-          </Route>
-        </Switch>
-      )}
+          )}
+        </Route>
+        <Route path="/high-scores">
+          <HighScores
+            slide={slide}
+            setSlide={setSlide}
+            username={username}
+            setUsername={setUsername}
+          ></HighScores>
+        </Route>
+      </Switch>
       <WrongAlert icon={<img alt="emoji of rick" src={emojiRick} />} />
     </Body>
   );
