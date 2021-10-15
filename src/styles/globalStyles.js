@@ -1,8 +1,21 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
-
+import getSchwifty from "../assets/fonts/get_schwifty.ttf";
+import Calligraphr from "../assets/fonts/Roiland-Sans.ttf";
 const GolbalStyles = createGlobalStyle`
 ${normalize}
+@font-face {
+  font-family: 'Get Schwifty';
+  src: url('${getSchwifty}') format('woff2'),
+       url('${getSchwifty}') format('woff'),
+       url('${getSchwifty}') format('truetype');
+}
+@font-face {
+  font-family: 'Calligraphr';
+  src: url('${Calligraphr}') format('woff2'),
+       url('${Calligraphr}') format('woff'),
+       url('${Calligraphr}') format('truetype');
+}
 html {
     box-sizing: border-box;
 }
@@ -22,6 +35,7 @@ body{
     min-height: 100vh;
     position:relative;
 }
+ 
 `;
 
 export default GolbalStyles;

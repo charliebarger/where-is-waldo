@@ -8,8 +8,8 @@ const getParasites = async () => {
   return querySnapshot.docs.map((doc) => {
     let data = doc.data();
     //add images
-    data.fullBody = require(`../parasites/${data.fullBody}.png`).default;
-    data.closeUp = require(`../parasites/${data.closeUp}.png`).default;
+    data.fullBody = require(`../images/parasites/${data.fullBody}.png`).default;
+    data.closeUp = require(`../images/parasites/${data.closeUp}.png`).default;
     return data;
   });
 };

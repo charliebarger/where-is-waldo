@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import Parasites from "../pop-ups/Parasite";
-import arrow from "../../assets/arrow.png";
+import arrow from "../../assets/images/arrow.png";
 
 // Start Styles
 

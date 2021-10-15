@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import StyledPopUp from "./StyledPopUp";
-import rick1 from "../../assets/rick1.png";
+import rick1 from "../../assets/images/rick1.png";
 import Button from "../Button";
 import Timer from "../header/Timer";
 import SetUsername from "./SetUsername";

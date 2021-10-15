@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import background from "../../assets/background.png";
+import background from "../../assets/images/background.png";
 import styled, { css } from "styled-components";
 import MagnifyingGlass from "./Magnify";
 

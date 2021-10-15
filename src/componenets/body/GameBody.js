@@ -8,7 +8,7 @@ import HighScores from "./HighScores";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import emojiRick from "../../assets/rickEmoji.png";
+import emojiRick from "../../assets/images/rickEmoji.png";
 
 //Start Styles
 
