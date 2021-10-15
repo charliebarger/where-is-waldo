@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-const Filter = require("bad-words");
 const NameInput = styled.input`
   outline: none;
   display: flex;
@@ -19,17 +18,6 @@ const NameInput = styled.input`
 `;
 
 const SetUsername = ({ setValidity, formValue, setFormValue, formId }) => {
-  const updateForm = (word) => {
-    const filter = new Filter();
-    return filter.isProfane(word);
-    // {
-    //   e.target.validity.valid = false;
-    //   e.target.setCustomValidity("No Naughty Words Bruh");
-    // } else {
-    //   setFormValue(e.target.value);
-    // }
-  };
-
   return (
     <form id={formId}>
       <NameInput
@@ -39,14 +27,12 @@ const SetUsername = ({ setValidity, formValue, setFormValue, formId }) => {
           if (/\s/.test(e.target.value)) {
             e.target.setCustomValidity("No Spaces Bruh");
           } else {
-            e.target.setCustomValidity("No Naughty Words Bruh");
+            e.target.setCustomValidity("Fill Out the Form Bruh ");
           }
         }}
         value={formValue}
         onChange={(e) => {
-          updateForm(e.target.value)
-            ? e.target.setCustomValidity("No Bad Words Bruh")
-            : e.target.setCustomValidity("");
+          e.target.setCustomValidity("");
           setFormValue(e.target.value);
           setValidity(e.target.validity.valid);
         }}
