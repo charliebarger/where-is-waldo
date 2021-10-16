@@ -21,10 +21,8 @@ function App() {
   //States that hold values that will be added to database after the game is completed
   const [username, setUsername] = useState("");
   const [id, setId] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
   //
-  const [second, setSecond] = useState("chicken");
+  const [second, setSecond] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
   function stopTimer() {
@@ -39,10 +37,13 @@ function App() {
     });
   };
 
-  const resetGame = () => {
-    console.log("resetting");
-    stopTimer();
+  useEffect(() => {
     getParasites().then((result) => setParasites(result));
+  }, []);
+
+  const resetGame = () => {
+    stopTimer();
+    parasites.forEach((parasite) => (parasite.found = false));
     setUsername("");
     setId("");
   };
@@ -60,8 +61,7 @@ function App() {
     switch (slide) {
       case 1:
         //start game
-        console.log("here");
-        resetGame();
+        parasites && resetGame();
         break;
       case 2:
         //purely a visual change
@@ -69,7 +69,6 @@ function App() {
       case 3:
         //record when game ended
         setIsActive(false);
-        setEndTime(Timestamp.now());
         break;
       case 4:
         //player entered username, now add to database

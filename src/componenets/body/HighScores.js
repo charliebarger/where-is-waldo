@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { collection, getDocs, limit, query, orderBy } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  limit,
+  query,
+  orderBy,
+  onSnapshot,
+} from "firebase/firestore";
 import db from "../../componenets/firebase.config";
 import FormatTime from "../../assets/helpers/formatTime";
 
@@ -80,9 +87,9 @@ const HighScores = ({ slide, setSlide }) => {
   //get top 10 player on the leaderbaord
   const getLeaders = async () => {
     const playerRef = collection(db, "players");
-    const highScores = await query(playerRef, limit(10), orderBy("time"));
-    const querySnapshot = await getDocs(highScores);
-    setWinners(querySnapshot.docs);
+    onSnapshot(query(playerRef, limit(10), orderBy("time")), (doc) =>
+      setWinners(doc.docs)
+    );
   };
 
   useEffect(() => {

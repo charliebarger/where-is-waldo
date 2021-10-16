@@ -65,9 +65,6 @@ const Time = styled.span`
 //End Styles
 
 const Timer = ({ second, finished, isActive, setSecond }) => {
-  const [seconds, setSeconds] = useState();
-  const [minutes, setMinutes] = useState();
-  const [hours, setHours] = useState();
   useEffect(() => {
     let intervalId;
     let delay;
