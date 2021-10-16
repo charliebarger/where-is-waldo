@@ -1,4 +1,4 @@
-import { collection, setDoc, doc, query, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import db from "../../componenets/firebase.config";
 
 const getParasites = async () => {

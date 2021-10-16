@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import Parasites from "../pop-ups/Parasite";
 import arrow from "../../assets/images/arrow.png";
-
+import uniqid from "uniqid";
 // Start Styles
 
 const Arrow = styled.div`
@@ -73,6 +73,7 @@ const SideCharacters = ({ slide, parasites }) => {
         {parasites.map((parasite) => {
           return (
             <Parasites
+              key={uniqid()}
               header
               parasiteName={parasite.name}
               imgSource={parasite["closeUp"]}

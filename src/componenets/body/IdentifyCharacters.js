@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-
+import uniqid from "uniqid";
 //Start Styles
 
 const NameWrapper = styled.div`
@@ -110,6 +110,7 @@ const IdentifyCharacters = ({ cords, parasites, checkForHit }) => {
     <NameWrapper cords={cords}>
       {parasites.map((parasite) => (
         <SelectParasite
+          key={uniqid()}
           found={parasite.found}
           onClick={
             !parasite.found ? () => checkForHit(cords, parasite.id) : undefined

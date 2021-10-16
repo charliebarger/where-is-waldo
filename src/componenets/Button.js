@@ -34,7 +34,7 @@ const Button = ({ children, handleEvent, linkTo, valid, formId }) => {
   );
   return (
     <>
-      {valid ? (
+      {linkTo ? (
         <Link style={{ margin: "auto" }} to={linkTo}>
           {button}
         </Link>

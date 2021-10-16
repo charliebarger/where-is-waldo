@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 import {
   collection,
-  getDocs,
   limit,
   query,
   orderBy,
@@ -10,6 +9,7 @@ import {
 } from "firebase/firestore";
 import db from "../../componenets/firebase.config";
 import FormatTime from "../../assets/helpers/formatTime";
+import uniqid from "uniqid";
 
 //Start Styles
 
@@ -102,7 +102,6 @@ const HighScores = ({
       setSlide(1);
     }
     if (!didLoad) {
-      alert("redo");
       getLeaders();
       setDidLoad(true);
     }
@@ -120,11 +119,11 @@ const HighScores = ({
             winners.map((winner, index) => {
               winner = winner.data();
               return (
-                <>
+                <React.Fragment key={uniqid()}>
                   <Numbers>{index + 1}</Numbers>
                   <UserNames>{winner.username}</UserNames>
                   <Numbers>{FormatTime(winner.time)}</Numbers>
-                </>
+                </React.Fragment>
               );
             })}
         </ScoreBoard>

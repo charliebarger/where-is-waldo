@@ -48,7 +48,7 @@ const NavItem = ({ children, side, mobile, linkPath, setClosed }) => {
       to={linkPath}
       exact
       activeClassName="active"
-      mobile={mobile}
+      mobile={mobile ? "true" : ""}
       side={side}
     >
       {children}

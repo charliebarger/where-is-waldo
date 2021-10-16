@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Hamburger from "./navigation/Hamburger";
 import SlidingNav from "./navigation/SlidingNav";

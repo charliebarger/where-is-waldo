@@ -26,10 +26,10 @@ const PopUpHead = styled.h1`
   white-space: nowrap;
   animation: typing 1s steps(40, end);
   @keyframes typing {
-    from {
+    0% {
       width: 0;
     }
-    to {
+    100% {
       width: 100%;
     }
   }
@@ -39,14 +39,14 @@ const SubText = styled.p`
   overflow: hidden;
   font-size: 28px;
   text-align: center;
-  animation: hi 0.5s ease-in forwards;
+  animation: popUp 0.5s ease-in forwards;
   animation-delay: 1s;
   opacity: 0;
-  @keyframes hi {
-    from {
+  @keyframes popUp {
+    0% {
       opacity: 0;
     }
-    to {
+    100% {
       opacity: 100%;
     }
   }

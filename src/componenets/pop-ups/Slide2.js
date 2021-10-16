@@ -3,6 +3,7 @@ import styled from "styled-components";
 import StyledPopUp from "./StyledPopUp";
 import Button from "../Button";
 import Parasites from "./Parasite";
+import uniqid from "uniqid";
 
 //Start Styles
 
@@ -31,6 +32,7 @@ const Slide2 = ({ changeSlide, parasites }) => {
         {parasites.map((parasite) => {
           return (
             <Parasites
+              key={uniqid()}
               parasiteName={parasite.name}
               imgSource={parasite["fullBody"]}
             />
