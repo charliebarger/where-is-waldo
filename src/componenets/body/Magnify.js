@@ -29,6 +29,9 @@ const Tagger = styled.div`
     background: red;
     padding: 4px;
   }
+  @media ${({ theme }) => theme.mediaQueries.below550} {
+    border: solid black 3px;
+  }
 `;
 
 //End Styles
