@@ -11,6 +11,7 @@ const StyledLogo = styled.span`
 `;
 
 const Wrapper = styled(Link)`
+  text-align: center;
   &:hover {
     transform: scale(1.1);
   }
