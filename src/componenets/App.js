@@ -54,7 +54,6 @@ function App() {
   //check if a all characters are found, if they are prompt player to enter username
   useEffect(() => {
     if (parasites && parasites.every((parasite) => parasite.found)) {
-      console.log("all found");
       setSlide(3);
     }
   }, [parasites]);
