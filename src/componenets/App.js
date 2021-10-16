@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import GameBody from "./body/GameBody";
 import { HashRouter as Router } from "react-router-dom";
 import getParasites from "../assets/helpers/retrieveData";
-import { doc, Timestamp, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import db from "./firebase.config";
 import uniqid from "uniqid";
 
@@ -21,9 +21,12 @@ function App() {
   //States that hold values that will be added to database after the game is completed
   const [username, setUsername] = useState("");
   const [id, setId] = useState("");
-  //
+  //Timeclock State
   const [second, setSecond] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  //High Score Page State
+  const [didLoad, setDidLoad] = useState(false);
+  const [winners, setWinners] = useState("");
 
   function stopTimer() {
     setSecond(0);
@@ -98,6 +101,10 @@ function App() {
           setClosed={setClosed}
         />
         <GameBody
+          winners={winners}
+          setWinners={setWinners}
+          didLoad={didLoad}
+          setDidLoad={setDidLoad}
           setIsActive={setIsActive}
           second={second}
           slide={slide}

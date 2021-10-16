@@ -81,9 +81,14 @@ const UserNames = styled.div`
 
 //End Styles
 
-const HighScores = ({ slide, setSlide }) => {
-  const [winners, setWinners] = useState("");
-
+const HighScores = ({
+  slide,
+  setSlide,
+  didLoad,
+  setDidLoad,
+  winners,
+  setWinners,
+}) => {
   //get top 10 player on the leaderbaord
   const getLeaders = async () => {
     const playerRef = collection(db, "players");
@@ -96,7 +101,11 @@ const HighScores = ({ slide, setSlide }) => {
     if (slide !== 4) {
       setSlide(1);
     }
-    getLeaders();
+    if (!didLoad) {
+      alert("redo");
+      getLeaders();
+      setDidLoad(true);
+    }
   }, [slide]);
 
   return (

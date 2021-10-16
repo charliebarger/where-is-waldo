@@ -41,6 +41,8 @@ const WrongAlert = styled(ToastContainer)`
 //End Styles
 
 const GameBody = ({
+  didLoad,
+  setDidLoad,
   slide,
   setSlide,
   setClosed,
@@ -50,6 +52,8 @@ const GameBody = ({
   setUsername,
   second,
   setIsActive,
+  winners,
+  setWinners,
 }) => {
   const [turnPhoneAlert, setTurnPhoneAlert] = useState(false);
   const [Xclicked, setXclicked] = useState(false);
@@ -169,6 +173,10 @@ const GameBody = ({
         </Route>
         <Route path="/high-scores">
           <HighScores
+            winners={winners}
+            setWinners={setWinners}
+            didLoad={didLoad}
+            setDidLoad={setDidLoad}
             slide={slide}
             setSlide={setSlide}
             username={username}
