@@ -9,7 +9,6 @@ import Nav from "./navigation/Nav";
 //Start Styles
 
 const StyledHeader = styled.header`
-  position: static;
   border-bottom: 2px solid white;
   height: 100px;
   background: black;

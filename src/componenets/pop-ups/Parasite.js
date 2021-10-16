@@ -26,7 +26,7 @@ const Overlay = styled.div`
           background: #80808070;
           &:before {
             transform: rotate(-25deg);
-            color: red;
+            color: ${({ theme }) => theme.colors.red};
             font-size: 24px;
             content: "Found";
           }
@@ -51,8 +51,9 @@ const ImageWrapper = styled.div`
   width: 150px;
   padding: 10px;
   border-radius: 100px;
-  border: ${({ found, theme }) => (found ? "#e73f40" : theme.colors.yellow)} 5px
-    solid;
+  border: ${({ found, theme }) =>
+      found ? theme.colors.red : theme.colors.yellow}
+    5px solid;
   display: flex;
   align-items: center;
   justify-content: center;

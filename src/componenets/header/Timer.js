@@ -35,7 +35,7 @@ const StyledTimer = styled.div`
       & {
         margin: 0px;
         margin-left: 5px;
-        color: #e73f40;
+        color: ${({ theme }) => theme.colors.red};
         box-shadow: 2px 2px 5px black;
         border: white solid 2px;
         font-size: 24px;

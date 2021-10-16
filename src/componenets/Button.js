@@ -13,7 +13,11 @@ const StyledButton = styled.button`
   background: white;
   border: ${({ theme }) => theme.colors.yellow} 2px solid;
   box-shadow: 2px 2px 5px black;
-  background: linear-gradient(to right, #e73f40 50%, white 50%);
+  background: linear-gradient(
+    to right,
+    ${({ theme }) => theme.colors.red} 50%,
+    white 50%
+  );
   background-position: right;
   background-size: 200% 100%;
   transition: all 0.5s ease-out;

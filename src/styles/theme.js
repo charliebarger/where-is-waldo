@@ -7,6 +7,7 @@ const theme = {
     blue: `#28b0c9`,
     green: "limegreen",
     yellow: "#bedb95",
+    red: "#e73f40",
   },
   mediaQueries: {
     below850: maxWidth(850),
