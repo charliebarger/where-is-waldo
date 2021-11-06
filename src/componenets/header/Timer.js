@@ -9,7 +9,6 @@ const StyledTimer = styled.div`
   }
   position: relative;
   box-shadow: 1px 1px 10px ${({ theme }) => theme.colors.green};
-  cursor: default;
   display: flex;
   background: black;
   color: white;
@@ -44,10 +43,12 @@ const StyledTimer = styled.div`
 `;
 
 const Hi = styled.div`
+  cursor: default;
   visibility: hidden;
 `;
 
 const TimeWrapper = styled.div`
+  cursor: default;
   display: flex;
   align-items: center;
   top: 0;
@@ -58,6 +59,7 @@ const TimeWrapper = styled.div`
 `;
 
 const Time = styled.span`
+  cursor: default;
   text-align: center;
   margin: auto;
 `;
