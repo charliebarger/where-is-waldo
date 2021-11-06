@@ -27,8 +27,8 @@ const Wrapper = styled(Link)`
   @media ${({ theme }) => theme.mediaQueries.below550} {
     ${StyledLogo} {
       font-size: 28px;
-      -webkit-text-stroke: .75px ${({ theme }) => theme.colors.yellow};
-      text-shadow:0px 0px 2.5px limegreen;
+      -webkit-text-stroke: 0.75px ${({ theme }) => theme.colors.yellow};
+      text-shadow: 0px 0px 2.5px limegreen;
     }
 
     padding: 40px 20px;
@@ -36,7 +36,6 @@ const Wrapper = styled(Link)`
   @media ${({ theme }) => theme.mediaQueries.below400} {
     ${StyledLogo} {
       font-size: 24px;
-      text-str
     }
 
     padding: 40px 20px;

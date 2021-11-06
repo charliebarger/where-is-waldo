@@ -5,6 +5,7 @@ import arrow from "../../assets/images/arrow.png";
 // Start Styles
 
 const Arrow = styled.div`
+  box-shadow: -2px 3px 10px;
   cursor: ${({ slide }) => (slide ? "default" : "pointer")};
   /* position: absolute; */
   position: absolute;
