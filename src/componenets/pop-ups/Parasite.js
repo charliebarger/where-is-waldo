@@ -69,8 +69,8 @@ const ImageWrapper = styled.div`
 
   &:hover, &:active {
     transform: scale(1.1);
-    animation: shakeIt 2s;
-    animation-iteration-count: infinite;
+    animation: linear infinite shakeIt 2s;
+
     ${Overlay} {
       height: 100%;
       width: 100%;

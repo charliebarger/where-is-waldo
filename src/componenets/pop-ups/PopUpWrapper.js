@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 `;
 
 const CoverScreen = styled.div`
+  margin: 40px auto;
   display: ${({ slide }) => (slide ? "flex" : "none")};
   justify-content: center;
   position: absolute;
@@ -25,7 +26,6 @@ const CoverScreen = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 40px auto;
   transform-origin: center top;
   @media ${({ theme }) => theme.mediaQueries.below700} {
     transform: scale(0.8);

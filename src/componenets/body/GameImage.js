@@ -51,10 +51,12 @@ const GameImage = ({
 
   //if magnify icon is false at time of click get the coordinates of click, toggle showing the icon everytime
   const handleClick = (e) => {
-    if (!showMagnify) {
-      getCords(e);
+    if (!slide) {
+      if (!showMagnify) {
+        getCords(e);
+      }
+      setShowMagnify(!showMagnify);
     }
-    setShowMagnify(!showMagnify);
   };
 
   useEffect(() => {
