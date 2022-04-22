@@ -14,7 +14,7 @@ A photo-tagging game, where a stopwatch times the user as they attempt to locate
 
 - Global high scores list, sorted by time
 - Timer that records users play time
-- aanimations done in CSS
+- animations done in CSS
 - photo tagging capabilities based on percent of image size to account for responsiveness
 
 ## Tech Stack
